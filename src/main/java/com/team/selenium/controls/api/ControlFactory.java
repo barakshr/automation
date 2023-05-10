@@ -19,15 +19,4 @@ public class ControlFactory extends PageFactory {
     public static void initElements(WebDriver driver, Object page) {
             PageFactory.initElements(new ControlFieldDecorator(new DefaultElementLocatorFactory(driver)), page);
     }
-
-    public static <T> T initElements(WebDriver driver, Class<T> pageClassToProxy) {
-        try {
-            T page = pageClassToProxy.newInstance();
-            PageFactory.initElements(new ControlFieldDecorator(new DefaultElementLocatorFactory(driver)), page);
-            return pageClassToProxy.cast(page);
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 }
