@@ -11,10 +11,12 @@ import java.lang.reflect.InvocationTargetException;
 public  abstract class  BasePage  {
 
      final WebDriver webDriver;
+     final BrowserActions browserActions;
 
     public BasePage() {
         this.webDriver= DriverPool.getInstance().getDriver(Thread.currentThread().getId());
         ControlFactory.initElements(this.webDriver,this);
+        this.browserActions = new BrowserActions();
     }
 
 
