@@ -5,7 +5,7 @@ import com.team.selenium.properties.Settings;
 
 public class Initilizer {
 
-    protected BrowserActions browserActions;
+
 
     public Initilizer() throws Exception {
         PropertiesHandler.readProperties();

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class BrowserActions {
 
-    private  WebDriver webDriver;
+    private final WebDriver webDriver;
 
     public BrowserActions() {
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
