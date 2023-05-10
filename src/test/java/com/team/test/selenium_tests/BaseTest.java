@@ -7,12 +7,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    protected BrowserActions browserActions;
     private Initilizer initilizer;
 
     @BeforeMethod
     public void setUp() throws Exception {
         this.initilizer = new Initilizer();
+
     }
 
     @AfterMethod
