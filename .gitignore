@@ -1,6 +1,9 @@
 HELP.md
 *.log
 target/
+allure-results/
+allure-report/
+allure-reports/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

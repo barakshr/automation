@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import java.net.URL;
 import java.time.Duration;
 
@@ -15,7 +16,7 @@ public class WebDriverFactory {
         WebDriver webDriver = null;
         switch (browserType) {
             case Firefox:
-                System.setProperty("webdriver.gecko.driver", "/Users/barakshamir/Documents/automation/geckodriver");
+                System.setProperty("webdriver.gecko.driver", "/Users/barakshamir/Documents/automation_new/automation/geckodriver");
                 webDriver = new FirefoxDriver();
                 break;
             case Chrome:
