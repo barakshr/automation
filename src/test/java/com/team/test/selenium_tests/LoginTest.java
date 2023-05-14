@@ -2,6 +2,7 @@ package com.team.test.selenium_tests;
 
 import com.team.test.pages.HomePage;
 import com.team.test.pages.LoginPage;
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 
 

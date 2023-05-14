@@ -2,6 +2,7 @@ package com.team.test.pages;
 
 
 import com.team.selenium.controls.elements.Button;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -16,6 +17,7 @@ public class HomePage extends BasePage {
     private Button itButton;
 
 
+    @Step("clickOnWorkManagement button")
     public HomePage clickOnWorkManagement() {
         workManagementButton.click();
         return this;
