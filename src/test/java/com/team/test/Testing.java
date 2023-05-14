@@ -12,7 +12,7 @@ public class Testing {
     private static final Logger LOGGER = LoggerFactory.getLogger(Testing.class.getName());
 
     @Test
-    public void fff() throws InterruptedException {
+    public void fffaaa() throws InterruptedException {
         LOGGER.info("selenium test");
         System.setProperty("webdriver.gecko.driver","/Users/barakshamir/Documents/temp/geckodriver"); // Setting system properties of FirefoxDriver
         WebDriver driver = new FirefoxDriver(); //Creating an object of FirefoxDriver
