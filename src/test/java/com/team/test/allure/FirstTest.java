@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+
 public class FirstTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(FirstTest.class.getName());
 
@@ -24,6 +25,7 @@ public class FirstTest {
         LOGGER.info("test1");
         ByteArrayInputStream imageAsByteArrayIS = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(pathResources.getPath() +"/"+ "fescobar.png")));
         Allure.addAttachment("Some Screenshot", imageAsByteArrayIS);
+
     }
 
     @Test
