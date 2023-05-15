@@ -2,12 +2,14 @@ package com.team.test.selenium_tests;
 
 import com.team.test.pages.HomePage;
 import com.team.test.pages.LoginPage;
-import io.qameta.allure.Step;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+
 
 public class LoginTest extends BaseTest {
 
@@ -16,6 +18,7 @@ public class LoginTest extends BaseTest {
     public void homePage() throws  InterruptedException {
         HomePage homePage = new HomePage();
         homePage.clickOnWorkManagement();
+        Assert.fail();
     }
 
 

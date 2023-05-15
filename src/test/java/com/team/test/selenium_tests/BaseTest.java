@@ -3,8 +3,10 @@ package com.team.test.selenium_tests;
 import com.team.selenium.Initilizer;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
-public class BaseTest {
+@Listeners(Listener.class)
+public abstract class BaseTest {
     private Initilizer initilizer;
 
     @BeforeMethod

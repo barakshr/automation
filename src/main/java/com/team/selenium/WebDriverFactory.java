@@ -1,5 +1,6 @@
 package com.team.selenium;
 
+import com.team.selenium.properties.Settings;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,11 +13,14 @@ import java.time.Duration;
 
 public class WebDriverFactory {
 
-    public static void  openNewWebDriver(BrowserType browserType) throws Exception {
+
+    public static void openNewWebDriver(BrowserType browserType) throws Exception {
+
+        String path = System.getProperty("user.dir")+"/src/main/resources/drivers/geckodriver";
         WebDriver webDriver = null;
         switch (browserType) {
             case Firefox:
-                System.setProperty("webdriver.gecko.driver", "/Users/barakshamir/Documents/automation_new/automation/geckodriver");
+                System.setProperty("webdriver.gecko.driver", path);
                 webDriver = new FirefoxDriver();
                 break;
             case Chrome:
@@ -28,6 +32,7 @@ public class WebDriverFactory {
                 webDriver = new InternetExplorerDriver();
                 break;
         }
+
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(2));
         DriverPool.getInstance().setDriver(Thread.currentThread().getId(), webDriver);
