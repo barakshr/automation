@@ -12,7 +12,7 @@ import org.openqa.selenium.support.How;
 public class HomePage extends BasePage {
 
 
-    private static final Logger LOGGER = LogManager.getLogger(Trash.class);
+
 
     @FindBy(how = How.XPATH, using = "/html/body/main/div[3]/div[1]/ul/li[1]/a")
     private Button workManagementButton;
@@ -23,19 +23,18 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "/html/body/header/div/div[1]/div/div[2]/div[4]/div/div/div/div/div[3]/div/div/div/div/div/div/div[2]/div")
     private Button loginButton;
 
-
     @Step("click on work management button")
     public HomePage clickOnWorkManagement() {
-        LOGGER.info("clickOnWorkManagement button");
+        getLogger().info("clickOnWorkManagement button");
         workManagementButton.waitForButtonToBeClickable();
         workManagementButton.click();
         return this;
     }
 
-
     @Step("go to login page")
     public LoginPage goToLoginPage() {
         myAccountButton.click();
+        getLogger().info("click login button");
         loginButton.click();
         return new LoginPage();
     }

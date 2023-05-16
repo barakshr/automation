@@ -51,7 +51,7 @@ public class LoginPage extends BasePage {
 
     @Step("check start page appear")
     public void checkStartPageAppear(){
-      browserActions.waitForUrlToAppear("start.atlassian.com",Duration.ofSeconds(10));
+      getBrowserActions().waitForUrlToAppear("start.atlassian.com",Duration.ofSeconds(10));
     }
 
 

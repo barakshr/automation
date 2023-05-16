@@ -8,11 +8,11 @@ public class Initilizer {
     public Initilizer() throws Exception {
         PropertiesHandler.readProperties();
         new WebDriverFactory().openNewWebDriver(Settings.BrowserType);
-        BrowserActions browserActions= new BrowserActions();
+        BrowserActions browserActions = new BrowserActions();
         browserActions.goToUrl(Settings.AUT);
     }
 
-    public  void closeDriver(){
+    public void closeDriver() {
         DriverPool.getInstance().closeDriver(Thread.currentThread().getId());
     }
 

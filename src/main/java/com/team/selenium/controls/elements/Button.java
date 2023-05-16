@@ -11,6 +11,8 @@ public interface Button extends Control {
 
 
     String getButtonText();
-    public void waitForButtonToBeClickable();
-    public void waitForButtonToBeClickable(Duration duration) ;
+
+    void waitForButtonToBeClickable();
+
+    void waitForButtonToBeClickable(Duration duration);
 }

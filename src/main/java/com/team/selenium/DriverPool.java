@@ -7,18 +7,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class DriverPool {
 
-    private final Map<Long, WebDriver> driversMap = new ConcurrentHashMap<>();
+    private static final Object mutex = new Object();
     private static DriverPool driverPool = null;
-
-    private static final Object mutex= new Object();
+    private final Map<Long, WebDriver> driversMap = new ConcurrentHashMap<>();
 
     private DriverPool() {
     }
 
-     public static DriverPool getInstance() {
+    public static DriverPool getInstance() {
         if (driverPool == null) {
-            synchronized (mutex){
-                if (driverPool==null){
+            synchronized (mutex) {
+                if (driverPool == null) {
                     driverPool = new DriverPool();
                 }
             }
@@ -26,7 +25,7 @@ public final class DriverPool {
         return driverPool;
     }
 
-    public void setDriver(Long threadId,WebDriver webDriver) {
+    public void setDriver(Long threadId, WebDriver webDriver) {
         driversMap.put(threadId, webDriver);
     }
 

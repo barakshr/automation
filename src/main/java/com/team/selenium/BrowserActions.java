@@ -18,8 +18,8 @@ public class BrowserActions {
         webDriver.navigate().to(url);
     }
 
-    public void waitForUrlToAppear(String expectedUrl, Duration duration){
-        WebDriverWait webDriverWait  =new WebDriverWait(webDriver, duration);
+    public void waitForUrlToAppear(String expectedUrl, Duration duration) {
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, duration);
         webDriverWait.until(ExpectedConditions.urlContains(expectedUrl));
     }
 

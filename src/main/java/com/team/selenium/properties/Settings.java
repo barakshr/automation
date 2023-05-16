@@ -1,12 +1,10 @@
 package com.team.selenium.properties;
 
 
-
 import com.team.selenium.BrowserType;
 
 
-public class Settings
-{
+public class Settings {
 
     public static String AUTConnectionString;
     public static String ReportingConnectionString;

@@ -27,8 +27,6 @@ public abstract class ControlImpl implements Control {
     }
 
 
-
-
     @Override
     public void waitForElementToBeVisible(int seconds) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));

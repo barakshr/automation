@@ -19,7 +19,7 @@ public class ControlListHandler implements InvocationHandler {
 
     /**
      * Given an interface and a locator, apply a wrapper over a list of elements.
-                *
+     *
      * @param interfaceType interface type we're trying to wrap around the element.
      * @param locator       locator on the page for the elements.
      * @param <T>           type of the interface.

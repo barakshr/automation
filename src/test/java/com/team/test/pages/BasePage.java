@@ -3,19 +3,21 @@ package com.team.test.pages;
 import com.team.selenium.BrowserActions;
 import com.team.selenium.DriverPool;
 import com.team.selenium.controls.api.ControlFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.lang.reflect.InvocationTargetException;
 
-public  abstract class  BasePage  {
-
-     final WebDriver webDriver;
-     final BrowserActions browserActions;
+public abstract class BasePage {
+    private final Logger logger;
+    private final WebDriver webDriver;
+    private final BrowserActions browserActions;
 
     public BasePage() {
-        this.webDriver= DriverPool.getInstance().getDriver(Thread.currentThread().getId());
-        ControlFactory.initElements(this.webDriver,this);
+        logger = LogManager.getLogger(this.getClass());
+        this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
+        ControlFactory.initElements(this.webDriver, this);
         this.browserActions = new BrowserActions();
     }
 
@@ -24,7 +26,15 @@ public  abstract class  BasePage  {
         return tPageClass.newInstance();
     }
 
+    public Logger getLogger() {
+        return logger;
+    }
 
+    public WebDriver getWebDriver() {
+        return webDriver;
+    }
 
-
+    public BrowserActions getBrowserActions() {
+        return browserActions;
+    }
 }
