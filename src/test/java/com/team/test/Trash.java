@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class Testing {
+public class Trash {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Testing.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(Trash.class.getName());
 
     @Test
     public void fffaaa() throws InterruptedException {

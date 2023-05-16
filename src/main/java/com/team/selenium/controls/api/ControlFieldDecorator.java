@@ -11,13 +11,13 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.FieldDecorator;
+import org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler;
+import org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler;
 
 import java.lang.reflect.*;
 import java.util.List;
 
-/**
- * Created by Karthik-pc on 12/10/2016.
- */
+
 public class ControlFieldDecorator implements FieldDecorator {
 
     protected ElementLocatorFactory factory;
@@ -29,7 +29,7 @@ public class ControlFieldDecorator implements FieldDecorator {
     @Override
     public Object decorate(ClassLoader loader, Field field) {
 
-        if (!(WebElement.class.isAssignableFrom(field.getType()) ||Control.class.isAssignableFrom(field.getType())  || isDecoratableList(field))) {
+        if (!(WebElement.class.isAssignableFrom(field.getType()) || Control.class.isAssignableFrom(field.getType()) || isDecoratableList(field))) {
             return null;
         }
         ElementLocator locator = factory.createLocator(field);
@@ -37,11 +37,7 @@ public class ControlFieldDecorator implements FieldDecorator {
             return null;
         }
         Class<?> fieldType = field.getType();
-        if (WebElement.class.equals(fieldType)) {
-            fieldType = Control.class;
-        }
-
-        if (WebElement.class.isAssignableFrom(fieldType) || Control.class.isAssignableFrom(field.getType()) ) {
+        if (WebElement.class.isAssignableFrom(fieldType) || Control.class.isAssignableFrom(field.getType())) {
 
             return proxyForLocator(loader, fieldType, locator);
         } else if (List.class.isAssignableFrom(fieldType)) {
@@ -76,19 +72,25 @@ public class ControlFieldDecorator implements FieldDecorator {
     }
 
     protected <T> T proxyForLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
-        InvocationHandler handler = new ControlHandler(interfaceType, locator);
-        T proxy;
-        proxy = interfaceType.cast(Proxy.newProxyInstance(
-                loader, new Class[]{interfaceType, WebElement.class, WrapsElement.class, Locatable.class}, handler));
-        return proxy;
+        if (interfaceType.equals(WebElement.class)) {
+            InvocationHandler handler = new LocatingElementHandler(locator);
+            return interfaceType.cast(Proxy.newProxyInstance(loader, new Class[]{WebElement.class, WrapsElement.class, Locatable.class}, handler));
+        } else {
+            InvocationHandler handler = new ControlHandler(interfaceType, locator);
+            return interfaceType.cast(Proxy.newProxyInstance(loader, new Class[]{interfaceType, WebElement.class, WrapsElement.class, Locatable.class}, handler));
+        }
+
     }
 
     protected <T> List<T> proxyForListLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
-        InvocationHandler handler = new ControlListHandler(interfaceType, locator);
+        InvocationHandler handler;
+        if (interfaceType.equals(WebElement.class)) {
+             handler = new LocatingElementListHandler(locator);
+        }
+        else {
+            handler = new ControlListHandler(interfaceType, locator);
+        }
+        return (List<T>) Proxy.newProxyInstance(loader, new Class[]{List.class}, handler);
 
-        List<T> proxy;
-        proxy = (List<T>) Proxy.newProxyInstance(
-                loader, new Class[]{List.class}, handler);
-        return proxy;
     }
 }

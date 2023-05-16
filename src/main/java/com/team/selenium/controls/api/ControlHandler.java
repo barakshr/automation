@@ -11,9 +11,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * Created by Karthik-pc on 12/10/2016.
- */
 public class ControlHandler implements InvocationHandler {
 
 
@@ -27,16 +24,12 @@ public class ControlHandler implements InvocationHandler {
         if (!Control.class.isAssignableFrom(interfaceType)) {
             throw new RuntimeException("interface not assignable to Control.");
         }
-        this.wrappingType = ImplementedByProcessor.getWrapperClass(ButtonImpl.class);
+        this.wrappingType = ImplementedByProcessor.getWrapperClass(interfaceType);
     }
 
     @Override
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
         WebElement element = locator.findElement();
-
-        if ("getWrappedElement".equals(method.getName())) {
-            return element;
-        }
         Constructor cons = wrappingType.getConstructor(WebElement.class);
         Object thing = cons.newInstance(element);
         try {

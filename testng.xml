@@ -3,7 +3,7 @@
 <suite name = "Parallel Testing Suite">
     <test name = "Parallel Tests" parallel = "methods">
         <classes>
-            <class name = "com.team.test.selenium_tests.LoginTest" />
+            <class name = "com.team.test.selenium_tests.LoginPageTest" />
         </classes>
     </test>
 </suite>

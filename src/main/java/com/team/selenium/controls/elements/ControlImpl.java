@@ -15,6 +15,7 @@ public abstract class ControlImpl implements Control {
     private final WebElement element;
     private final WebDriver webDriver;
 
+
     public ControlImpl(final WebElement element) {
         this.element = element;
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
@@ -24,6 +25,8 @@ public abstract class ControlImpl implements Control {
     public void click() {
         element.click();
     }
+
+
 
 
     @Override
@@ -36,4 +39,7 @@ public abstract class ControlImpl implements Control {
         return element;
     }
 
+    WebDriver getWebDriver() {
+        return webDriver;
+    }
 }

@@ -5,8 +5,6 @@ import com.team.selenium.properties.Settings;
 
 public class Initilizer {
 
-
-
     public Initilizer() throws Exception {
         PropertiesHandler.readProperties();
         new WebDriverFactory().openNewWebDriver(Settings.BrowserType);

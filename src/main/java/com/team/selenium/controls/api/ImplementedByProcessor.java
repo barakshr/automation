@@ -3,9 +3,6 @@ package com.team.selenium.controls.api;
 
 import com.team.selenium.controls.elements.Control;
 
-/**
- * Created by Karthik-pc on 12/10/2016.
- */
 public final class ImplementedByProcessor {
 
     public ImplementedByProcessor() {

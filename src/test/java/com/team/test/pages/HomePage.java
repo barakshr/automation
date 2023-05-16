@@ -2,7 +2,7 @@ package com.team.test.pages;
 
 
 import com.team.selenium.controls.elements.Button;
-import com.team.test.Testing;
+import com.team.test.Trash;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,25 +12,32 @@ import org.openqa.selenium.support.How;
 public class HomePage extends BasePage {
 
 
-    private static final Logger LOGGER =  LogManager.getLogger(Testing.class);
+    private static final Logger LOGGER = LogManager.getLogger(Trash.class);
 
     @FindBy(how = How.XPATH, using = "/html/body/main/div[3]/div[1]/ul/li[1]/a")
     private Button workManagementButton;
 
+    @FindBy(how = How.XPATH, using = "/html/body/header/div/div[1]/div/div[2]/div[4]/div/div/div/div/div[1]/div/div/div/button/span/span/div/span[1]/span")
+    private Button myAccountButton;
 
-    @FindBy(how = How.XPATH, using = "/html/body/main/div[3]/div[1]/ul/li[2]/a")
-    private Button itButton;
+    @FindBy(how = How.XPATH, using = "/html/body/header/div/div[1]/div/div[2]/div[4]/div/div/div/div/div[3]/div/div/div/div/div/div/div[2]/div")
+    private Button loginButton;
 
 
-    @Step("clickOnWorkManagement button")
+    @Step("click on work management button")
     public HomePage clickOnWorkManagement() {
         LOGGER.info("clickOnWorkManagement button");
+        workManagementButton.waitForButtonToBeClickable();
         workManagementButton.click();
         return this;
     }
 
-    public HomePage clickOnIt() {
-        itButton.click();
-        return this;
+
+    @Step("go to login page")
+    public LoginPage goToLoginPage() {
+        myAccountButton.click();
+        loginButton.click();
+        return new LoginPage();
     }
+
 }

@@ -12,7 +12,6 @@ public abstract class BaseTest {
     @BeforeMethod
     public void setUp() throws Exception {
         this.initilizer = new Initilizer();
-
     }
 
     @AfterMethod

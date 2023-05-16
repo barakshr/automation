@@ -21,7 +21,7 @@ public  abstract class  BasePage  {
 
 
     public <T extends BasePage> T goToPage(Class<T> tPageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        return tPageClass.getConstructor(WebDriver.class).newInstance(this.webDriver);
+        return tPageClass.newInstance();
     }
 
 
