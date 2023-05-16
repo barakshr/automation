@@ -1,18 +1,13 @@
 package com.team.test.pages;
 
-import com.team.selenium.BrowserActions;
-import com.team.selenium.DriverPool;
 import com.team.selenium.controls.elements.Button;
+import com.team.selenium.controls.elements.SimpleText;
 import com.team.selenium.controls.elements.TextBox;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -35,7 +30,7 @@ public class LoginPage extends BasePage {
     private TextBox passwordTxb;
 
     @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/div/section/div/div[2]/span/span")
-    private WebElement wrongPasswordError;
+    private SimpleText wrongPasswordError;
 
 
     @Step("login page")
@@ -50,13 +45,12 @@ public class LoginPage extends BasePage {
     }
 
     @Step("check start page appear")
-    public void checkStartPageAppear(){
-      getBrowserActions().waitForUrlToAppear("start.atlassian.com",Duration.ofSeconds(10));
+    public void checkStartPageAppear() {
+        getBrowserActions().waitForUrlToAppear("start.atlassian.com", Duration.ofSeconds(10));
     }
 
-
     @Step("login failure message")
-    public String  getLoginFailure() {
+    public String getLoginFailure() {
         return wrongPasswordError.getText();
     }
 }
