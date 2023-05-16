@@ -11,6 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public abstract class BasePage {
     private final Logger logger;
+
     private final WebDriver webDriver;
     private final BrowserActions browserActions;
 
