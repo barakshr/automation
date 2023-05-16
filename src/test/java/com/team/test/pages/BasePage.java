@@ -21,7 +21,6 @@ public abstract class BasePage {
         this.browserActions = new BrowserActions();
     }
 
-
     public <T extends BasePage> T goToPage(Class<T> tPageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         return tPageClass.newInstance();
     }

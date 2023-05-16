@@ -11,9 +11,6 @@ import org.openqa.selenium.support.How;
 
 public class HomePage extends BasePage {
 
-
-
-
     @FindBy(how = How.XPATH, using = "/html/body/main/div[3]/div[1]/ul/li[1]/a")
     private Button workManagementButton;
 

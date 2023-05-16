@@ -14,7 +14,6 @@ import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
-    private static final Logger LOGGER = LogManager.getLogger(BasePage.class);
 
     @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/form/button/span")
     private Button continueBtn;
