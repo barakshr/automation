@@ -14,12 +14,11 @@ public class LoginPageTests extends BaseTest {
 
     @Test
     public void failLoginWrongPassword() {
-        HomePage homePage = new HomePage();
-        String actualText = homePage
+        String actualText = getHomePage()
                 .goToLoginPage()
                 .login("nefonoj558@carpetra.com", "123")
                 .getLoginFailure();
-        String expectedText = "Incorrect email address and / or password. Do you need help logging in";
+        String expectedText = "Incorrect email address and / or password. Do you need help logging in?";
         String actualEditedText = actualText.toLowerCase().replaceAll("\\s*", "");
         String expectedEditedText = expectedText.toLowerCase().replaceAll("\\s*", "");
         Assert.assertEquals(actualEditedText, expectedEditedText);
@@ -28,8 +27,7 @@ public class LoginPageTests extends BaseTest {
 
     @Test
     public void loginSuccess() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        HomePage homePage = new HomePage();
-        homePage.goToLoginPage()
+        getHomePage().goToLoginPage()
                 .login("nefonoj558@carpetra.com", "QAZwsx123")
                 .goToPage(StartPage.class)
                 .checkPageAppear("start.atlassian.com");

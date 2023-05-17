@@ -14,8 +14,8 @@ public class StartPageTests extends BaseTest {
 
     @Test
     public void filterResults() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        HomePage homePage = new HomePage();
-        String actualFilterResults = homePage.goToLoginPage()
+
+        String actualFilterResults = getHomePage().goToLoginPage()
                 .login("nefonoj558@carpetra.com", "QAZwsx123").
                 goToPage(StartPage.class)
                 .filterByTitle("abc")

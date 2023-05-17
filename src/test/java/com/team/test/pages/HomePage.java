@@ -18,11 +18,11 @@ public class HomePage extends BasePage {
     private Button loginButton;
 
     @Step("click on work management button")
-    public HomePage clickOnWorkManagement() {
+    public WorkManagementPage goToWorkManagement() {
         getLogger().info("clickOnWorkManagement button");
         workManagementButton.waitForButtonToBeClickable();
         workManagementButton.click();
-        return this;
+        return new WorkManagementPage();
     }
 
     @Step("go to login page")
