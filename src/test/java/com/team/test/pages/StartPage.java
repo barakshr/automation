@@ -1,16 +1,19 @@
 package com.team.test.pages;
 
 import com.team.selenium.controls.elements.TextBox;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.time.Duration;
+
 public class StartPage extends BasePage {
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div[3]/div/div[2]/div[2]/div/div/div[4]/div[2]/div[1]/div/div/div/input")
+    @FindBy(how = How.XPATH, using = "//input[@data-testid='recent-work_search-input']")
     private TextBox filterTxb;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div[3]/div/div[2]/div[2]/div/div/div[4]/div[2]/div[2]/div/div[3]/div/div[2]/div/h3")
+    @FindBy(how = How.XPATH, using = "//div[@data-testid='viewedPanel']")
     private WebElement filterTextResults;
 
 

@@ -1,6 +1,7 @@
-package com.team.test.selenium_tests;
+package com.team.test.selenium_tests.base;
 
 import com.team.selenium.Initilizer;
+import com.team.test.selenium_tests.base.Listener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;

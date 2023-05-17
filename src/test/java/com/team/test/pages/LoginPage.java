@@ -7,24 +7,23 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import java.time.Duration;
-
 
 public class LoginPage extends BasePage {
 
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/form/button/span")
+    @FindBy(how = How.ID, using = "login-submit")
     private Button continueBtn;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/form/button/span/span")
+    @FindBy(how = How.ID, using = "login-submit")
     private Button loginBtn;
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/form/div[1]/div[1]/div/div/div/input")
+
+    @FindBy(how = How.ID, using = "username")
     private TextBox emailAddressTxb;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/form/div[1]/div[2]/div/div/div/div/div/input")
+    @FindBy(how = How.ID, using = "password")
     private TextBox passwordTxb;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/div[2]/div[2]/section/div[2]/div/section/div/div[2]/span/span")
+    @FindBy(how = How.CLASS_NAME, using = "css-xal9c7")
     private SimpleText wrongPasswordError;
 
 
@@ -39,10 +38,6 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    @Step("check start page appear")
-    public void checkStartPageAppear() {
-        getBrowserActions().waitForUrlToAppear("start.atlassian.com", Duration.ofSeconds(10));
-    }
 
     @Step("login failure message")
     public String getLoginFailure() {

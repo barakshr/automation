@@ -1,11 +1,15 @@
 package com.team.test.selenium_tests;
 
 import com.team.test.pages.HomePage;
+import com.team.test.pages.StartPage;
+import com.team.test.selenium_tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.lang.reflect.InvocationTargetException;
 
-public class LoginPageTest extends BaseTest {
+
+public class LoginPageTests extends BaseTest {
 
 
     @Test
@@ -16,25 +20,18 @@ public class LoginPageTest extends BaseTest {
                 .login("nefonoj558@carpetra.com", "123")
                 .getLoginFailure();
         String expectedText = "Incorrect email address and / or password. Do you need help logging in";
-        String actualEditedText = expectedText.toLowerCase().replaceAll("\\s*", "");
+        String actualEditedText = actualText.toLowerCase().replaceAll("\\s*", "");
         String expectedEditedText = expectedText.toLowerCase().replaceAll("\\s*", "");
         Assert.assertEquals(actualEditedText, expectedEditedText);
     }
 
 
     @Test
-    public void loginSuccess() {
+    public void loginSuccess() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         HomePage homePage = new HomePage();
-        homePage
-                .goToLoginPage()
+        homePage.goToLoginPage()
                 .login("nefonoj558@carpetra.com", "QAZwsx123")
-                .checkStartPageAppear();
-    }
-
-    @Test
-    public void goToWorkManagement() {
-        HomePage homePage = new HomePage();
-        homePage.clickOnWorkManagement();
-        Assert.fail();
+                .goToPage(StartPage.class)
+                .checkPageAppear("start.atlassian.com");
     }
 }

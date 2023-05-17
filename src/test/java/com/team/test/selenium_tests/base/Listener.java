@@ -1,4 +1,4 @@
-package com.team.test.selenium_tests;
+package com.team.test.selenium_tests.base;
 
 
 import com.team.selenium.DriverPool;
