@@ -33,19 +33,19 @@ public abstract class BasePage {
         getBrowserActions().waitForUrlToAppear(pageUrl, Duration.ofSeconds(10));
     }
 
-    Actions getActions() {
+   public Actions getActions() {
         return new Actions(webDriver);
     }
 
-    Logger getLogger() {
+    public Logger getLogger() {
         return logger;
     }
 
-    WebDriver getWebDriver() {
+    public  WebDriver getWebDriver() {
         return webDriver;
     }
 
-    BrowserActions getBrowserActions() {
+    public  BrowserActions getBrowserActions() {
         return browserActions;
     }
 }
