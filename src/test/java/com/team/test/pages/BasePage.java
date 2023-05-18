@@ -1,4 +1,4 @@
-package com.team.test.pages.atlassian;
+package com.team.test.pages;
 
 import com.team.selenium.BrowserActions;
 import com.team.selenium.DriverPool;

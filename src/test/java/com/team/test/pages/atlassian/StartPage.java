@@ -1,6 +1,7 @@
 package com.team.test.pages.atlassian;
 
 import com.team.selenium.controls.elements.TextBox;
+import com.team.test.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;

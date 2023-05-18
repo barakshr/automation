@@ -1,6 +1,6 @@
 package com.team.test.selenium_tests.atlassian;
 
-import com.team.test.selenium_tests.base.BaseTest;
+import com.team.test.selenium_tests.BaseTest;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.InvocationTargetException;
