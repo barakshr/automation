@@ -3,9 +3,9 @@
 <suite name = "Parallel Testing Suite">
     <test name = "Parallel Tests" parallel = "methods">
         <classes>
-            <class name = "com.team.test.selenium_tests.LoginPageTests" />
-            <class name = "com.team.test.selenium_tests.StartPageTests" />
-            <class name = "com.team.test.selenium_tests.HomePageTests" />
+            <class name = "com.team.test.selenium_tests.atlassian.LoginPageTests" />
+            <class name = "com.team.test.selenium_tests.atlassian.StartPageTests" />
+            <class name = "com.team.test.selenium_tests.atlassian.HomePageTests" />
         </classes>
     </test>
 </suite>

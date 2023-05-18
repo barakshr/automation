@@ -1,12 +1,11 @@
 package com.team.selenium;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.URL;
 import java.time.Duration;
 
 
@@ -18,18 +17,22 @@ public class WebDriverFactory {
         WebDriver webDriver = null;
         switch (browserType) {
             case Firefox:
-                System.setProperty("webdriver.gecko.driver", path + "geckodriver");
+                WebDriverManager.firefoxdriver().setup();
                 webDriver = new FirefoxDriver();
-                webDriver.manage().deleteAllCookies();
                 break;
             case Chrome:
-                ChromeOptions chromeOptions = new ChromeOptions();
-                webDriver = new RemoteWebDriver(new URL("http://192.168.0.207:4444"), chromeOptions);
+                /*
+                fix selenium bug , 500 error in the response, when using this lib :
+                   WebDriverManager.chromedriver().setup();
+                   webDriver = new ChromeDriver();
+                   webDriver.get("www.cnn.com");
+                */
+                System.setProperty("webdriver.chrome.driver", path + "chromedriver");
+                webDriver = new ChromeDriver();
                 break;
 
             case IE:
-                webDriver = new InternetExplorerDriver();
-                break;
+               throw  new Exception("IE not web driver implemented");
         }
 
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
