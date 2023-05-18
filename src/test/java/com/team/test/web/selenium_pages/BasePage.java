@@ -1,4 +1,4 @@
-package com.team.test.pages;
+package com.team.test.web.selenium_pages;
 
 import com.team.selenium.BrowserActions;
 import com.team.selenium.DriverPool;

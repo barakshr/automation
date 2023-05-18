@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.time.Duration;
 
@@ -32,7 +31,7 @@ public class WebDriverFactory {
                 break;
 
             case IE:
-               throw  new Exception("IE not web driver implemented");
+                throw new Exception("IE not web driver implemented");
         }
 
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

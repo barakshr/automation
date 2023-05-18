@@ -1,9 +1,9 @@
-package com.team.test.pages.atlassian;
+package com.team.test.web.selenium_pages.atlassian;
 
 import com.team.selenium.controls.elements.Button;
 import com.team.selenium.controls.elements.SimpleText;
 import com.team.selenium.controls.elements.TextBox;
-import com.team.test.pages.BasePage;
+import com.team.test.web.selenium_pages.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;

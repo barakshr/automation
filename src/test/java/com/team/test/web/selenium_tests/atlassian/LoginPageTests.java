@@ -1,7 +1,7 @@
-package com.team.test.selenium_tests.atlassian;
+package com.team.test.web.selenium_tests.atlassian;
 
-import com.team.test.pages.atlassian.StartPage;
-import com.team.test.selenium_tests.BaseTest;
+import com.team.test.web.selenium_pages.atlassian.StartPage;
+import com.team.test.web.selenium_tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

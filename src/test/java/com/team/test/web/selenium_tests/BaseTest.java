@@ -1,7 +1,7 @@
-package com.team.test.selenium_tests;
+package com.team.test.web.selenium_tests;
 
 import com.team.selenium.Initilizer;
-import com.team.test.pages.atlassian.HomePage;
+import com.team.test.web.selenium_pages.atlassian.HomePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
