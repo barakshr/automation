@@ -1,11 +1,22 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name = "Parallel Testing Suite">
-    <test name = "Parallel Tests" parallel = "methods">
+<suite name="Parallel Testing Suite">
+    <test name="HorizontalSliderTests_1" parallel="methods">
+        <parameter name="rangeVal" value="4"/>
         <classes>
-            <class name = "com.team.test.selenium_tests.atlassian.LoginPageTests" />
-            <class name = "com.team.test.selenium_tests.atlassian.StartPageTests" />
-            <class name = "com.team.test.selenium_tests.atlassian.HomePageTests" />
+            <class name="com.team.test.selenium.tests.herokuapp.HorizontalSliderTests"/>
+        </classes>
+    </test>
+    <test name="HorizontalSliderTests_2" parallel="methods">
+        <parameter name="rangeVal" value="0"/>
+        <classes>
+            <class name="com.team.test.selenium.tests.herokuapp.HorizontalSliderTests"/>
+        </classes>
+    </test>
+    <test name="HorizontalSliderTests_3" parallel="methods">
+        <parameter name="rangeVal" value="5"/>
+        <classes>
+            <class name="com.team.test.selenium.tests.herokuapp.HorizontalSliderTests"/>
         </classes>
     </test>
 </suite>

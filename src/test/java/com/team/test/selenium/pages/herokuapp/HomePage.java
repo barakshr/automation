@@ -17,7 +17,7 @@ public class HomePage extends BasePage {
     List<Button> linksToPages;
 
     public HomePage selectLinkToPage(String page) {
-        Button link = linksToPages.stream().filter(webElement -> webElement.getText().equals("Dropdown")).findFirst().get();
+        Button link = linksToPages.stream().filter(webElement -> webElement.getText().equals(page)).findFirst().get();
         link.click();
         return this;
     }
