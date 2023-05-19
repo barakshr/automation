@@ -23,6 +23,9 @@ public class BrowserActions {
         webDriverWait.until(ExpectedConditions.urlContains(expectedUrl));
     }
 
+    public void maximize(){
+        webDriver.manage().window().maximize();
+    }
 
     public void forward() {
         webDriver.navigate().forward();

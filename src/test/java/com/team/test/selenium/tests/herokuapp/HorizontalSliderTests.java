@@ -20,7 +20,7 @@ public class HorizontalSliderTests extends BaseTest {
                 .goToPage(HorizontalSliderPage.class)
                 .moveHorizontalSliderWithArrows(rangeVal)
                 .getSliderRange();
-        String expectedRang = rangeVal.toString();
-        Assert.assertEquals(actualRange, expectedRang);
+        String expectedRange = rangeVal.toString();
+        Assert.assertEquals(actualRange, expectedRange);
     }
 }

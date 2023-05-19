@@ -1,5 +1,8 @@
 package com.team.test.selenium.pages.herokuapp;
 
+import com.team.selenium.controls.elements.SimpleText;
+import com.team.selenium.controls.elements.Slider;
+import com.team.selenium.controls.elements.SliderImp;
 import com.team.test.selenium.pages.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -9,10 +12,10 @@ import org.openqa.selenium.support.How;
 public class HorizontalSliderPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div/div/input")
-    WebElement sliderButton;
+    Slider sliderButton;
 
     @FindBy(how = How.ID, using = "range")
-    WebElement sliderRange;
+    SimpleText sliderRange;
 
 
     public HorizontalSliderPage moveHorizontalSliderWithArrows(int toRange) {
@@ -26,10 +29,7 @@ public class HorizontalSliderPage extends BasePage {
         } else {
             arrowMovement = Keys.ARROW_RIGHT;
         }
-
-        for (int i = 0; i < steps; i++) {
-            sliderButton.sendKeys(arrowMovement);
-        }
+        sliderButton.moveSliderWithArrow(arrowMovement,steps);
         return this;
     }
 

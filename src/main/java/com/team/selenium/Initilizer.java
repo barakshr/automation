@@ -9,6 +9,7 @@ public class Initilizer {
         PropertiesHandler.readProperties();
         new WebDriverFactory().openNewWebDriver(Settings.BrowserType);
         BrowserActions browserActions = new BrowserActions();
+        browserActions.maximize();
         browserActions.goToUrl(Settings.AUT);
     }
 

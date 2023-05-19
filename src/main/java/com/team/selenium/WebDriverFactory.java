@@ -33,7 +33,6 @@ public class WebDriverFactory {
             case IE:
                 throw new Exception("IE not web driver implemented");
         }
-
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         DriverPool.getInstance().setDriver(Thread.currentThread().getId(), webDriver);
