@@ -16,9 +16,4 @@ public class TextBoxImpl extends ControlImpl implements TextBox {
         getElement().sendKeys(text);
 
     }
-
-    @Override
-    public String getTextBoxTest() {
-        return getElement().getText();
-    }
 }

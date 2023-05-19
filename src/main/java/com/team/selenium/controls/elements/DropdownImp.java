@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class DropdownImp extends ControlImpl implements Dropdown {
 
-    private Select dropdown;
+    private final Select dropdown;
 
     public DropdownImp(WebElement element) {
         super(element);

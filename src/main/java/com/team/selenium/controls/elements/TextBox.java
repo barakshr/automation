@@ -9,6 +9,6 @@ public interface TextBox extends Control {
 
     void sendKeys(String text);
 
-    String getTextBoxTest();
+
 
 }

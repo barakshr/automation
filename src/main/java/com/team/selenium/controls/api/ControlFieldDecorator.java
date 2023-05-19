@@ -66,7 +66,7 @@ public class ControlFieldDecorator implements FieldDecorator {
                 return false;
             } else {
                 Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
-                return !WebElement.class.equals(listType) ? false : field.getAnnotation(FindBy.class) != null || field.getAnnotation(FindBys.class) != null || field.getAnnotation(FindAll.class) != null;
+                return !WebElement.class.equals(listType) && !listType.getClass().isInstance(Control.class) ? false : field.getAnnotation(FindBy.class) != null || field.getAnnotation(FindBys.class) != null || field.getAnnotation(FindAll.class) != null;
             }
         }
     }
@@ -85,9 +85,8 @@ public class ControlFieldDecorator implements FieldDecorator {
     protected <T> List<T> proxyForListLocator(ClassLoader loader, Class<T> interfaceType, ElementLocator locator) {
         InvocationHandler handler;
         if (interfaceType.equals(WebElement.class)) {
-             handler = new LocatingElementListHandler(locator);
-        }
-        else {
+            handler = new LocatingElementListHandler(locator);
+        } else {
             handler = new ControlListHandler(interfaceType, locator);
         }
         return (List<T>) Proxy.newProxyInstance(loader, new Class[]{List.class}, handler);
