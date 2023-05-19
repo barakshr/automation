@@ -12,16 +12,16 @@ import java.util.List;
 public class DropdownPageTests extends BaseTest {
 
     @Test
-    //
+    //use test params
     public void dropdown() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         HomePage homePage = new HomePage();
         List<String> selection = homePage
                 .selectLinkToPage("Dropdown")
                 .goToPage(DropdownPage.class)
                 .selectFormDropdown("1")
-                .getSelections();
+                .getDropdownSelections();
         Assert.assertEquals(selection.size(), 1, "more or less then one selection");
-        Assert.assertEquals(selection.get(0), "Option 1"," option was not selected");
+        Assert.assertEquals(selection.get(0), "Option 1"," option 1 was not selected");
 
     }
 
