@@ -2,13 +2,17 @@ package com.team.test.experimentstests;
 
 import com.team.selenium.DriverPool;
 import com.team.test.selenium.tests.BaseTest;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-public class Experiment extends BaseTest {
+import java.time.Duration;
+
+public class Experiment  {
 
 
     @Test
@@ -16,7 +20,12 @@ public class Experiment extends BaseTest {
         By uploadButton = By.id("file-submit");
         By inputField = By.id("file-upload");
 
-        WebDriver webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver webDriver = new FirefoxDriver();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(2));
+
+
         webDriver.get("https://the-internet.herokuapp.com/upload");
         webDriver.findElement(inputField).sendKeys("/Users/barakshamir/Downloads/playwrightAndroid.png");
         webDriver.findElement(uploadButton).click();
@@ -24,7 +33,11 @@ public class Experiment extends BaseTest {
 
     @Test
     public void rightClick_context_menu_and_accept_js_alert() {
-        WebDriver webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver webDriver = new FirefoxDriver();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(2));
+
         webDriver.get("  https://the-internet.herokuapp.com/context_menu");
         WebElement webElement = webDriver.findElement(By.id("hot-spot"));
         Actions actions = new Actions(webDriver);
@@ -38,12 +51,13 @@ public class Experiment extends BaseTest {
 
     @Test
     public void iframe_html_inside_html() {
-        By frameElement=By.className("tox-edit-area__iframe");
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver webDriver = new FirefoxDriver();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(2));
 
-
-        WebDriver webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
-        webDriver.get("https://the-internet.herokuapp.com/iframe");
-        WebElement frame=webDriver.findElement(frameElement);
+        webDriver.get("https://the-internet.herokuapp.com/nested_frames");
+        WebElement frame = webDriver.findElement(By.className("tox-edit-area__iframe"));
         //*
         webDriver.switchTo().frame(frame);
         webDriver.findElement(By.id("tinymce")).clear();
@@ -52,8 +66,35 @@ public class Experiment extends BaseTest {
         webDriver.switchTo().parentFrame();
     }
 
+    @Test
+    public void frames_inside_frames_top_middle() {
+        WebDriver webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
+        webDriver.get("https://the-internet.herokuapp.com/nested_frames");
+
+        //*top_middle frame
+        WebElement topElementFrame = webDriver.findElement(By.name("frame-top"));
+        webDriver.switchTo().frame(topElementFrame);
+
+        //top frame
+        WebElement topMiddleElementFrame = webDriver.findElement(By.name("frame-middle"));
+        webDriver.switchTo().frame(topMiddleElementFrame);
+
+        //middle frame inside top
+        WebElement middle = webDriver.findElement(By.id("content"));
+        System.out.println(middle.getText());
+        webDriver.switchTo().parentFrame().switchTo().parentFrame();
+    }
 
     @Test
-    public void frames_inside_frames() {
+    public void frames_inside_frames_bottom() {
+        WebDriver webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
+        webDriver.get("https://the-internet.herokuapp.com/nested_frames");
+        //*bottom frame
+        WebElement bottomFrameElement = webDriver.findElement(By.name("frame-bottom"));
+        webDriver.switchTo().frame(bottomFrameElement);
+        WebElement frameBottomElement = webDriver.findElement(By.tagName("body"));
+        String bottom = frameBottomElement.getText();
+        System.out.println(bottom);
+        webDriver.switchTo().parentFrame();
     }
 }
