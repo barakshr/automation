@@ -17,18 +17,12 @@ public class ElementRenderedAfterTheFactPage extends BasePage {
     WebElement startButton;
 
     @FindBy(how = How.ID, using = "finish")
-    SimpleText finish;
+    WebElement finish;
 
     public void press(){
-      //  WebDriverWait wait=  new WebDriverWait(getWebDriver(), Duration.ofSeconds(10));
-
         startButton.click();
-
         WebDriverWait wait = new WebDriverWait(getWebDriver(), Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOf((WebElement) finish));
-
-  //      finish.waitForElementToBeVisible(10);
-      //  wait.until(ExpectedConditions.visibilityOf(finish));
+        wait.until(ExpectedConditions.visibilityOf( finish));
         finish.getText();
     }
 
