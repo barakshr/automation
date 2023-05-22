@@ -4,9 +4,8 @@ package com.team.test.selenium.tests;
 import com.team.selenium.DriverPool;
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
@@ -15,9 +14,24 @@ import org.testng.ITestResult;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.lang.reflect.Method;
 
-public class Listener implements ITestListener {
+
+
+public class Listener implements ITestListener, WebDriverListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class.getName());
+
+
+    @Override
+    public void beforeFindElement(WebElement element, By locator) {
+        System.out.println("fdsfsdfdfdfsfd");
+        LOGGER.debug("finding element: {}",element.getText());
+    }
+
+    @Override
+    public void beforeClick(WebElement element) {
+        LOGGER.debug("clicking on  element: {}",element.getText());
+    }
 
 
     @Override
