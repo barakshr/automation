@@ -1,18 +1,15 @@
 package com.team.test.experimentstests;
 
 import com.team.selenium.DriverPool;
-import com.team.test.selenium.tests.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Experiment  {
+public class Experiment {
 
 
     @Test
@@ -96,5 +93,26 @@ public class Experiment  {
         String bottom = frameBottomElement.getText();
         System.out.println(bottom);
         webDriver.switchTo().parentFrame();
+    }
+
+    @Test
+    public void scrollIntoView() {
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver webDriver = new FirefoxDriver();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(12));
+        webDriver.get("http://the-internet.herokuapp.com/large");
+        WebElement webElement = webDriver.findElement(By.id("large-table"));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webElement);
+    }
+
+    @Test
+    public void setCookie() {
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver webDriver = new FirefoxDriver();
+        Cookie cookie = new Cookie.Builder("tau", "123")
+                .domain("the-internet.herokuapp.com")
+                .build();
+        webDriver.manage().addCookie(cookie);
     }
 }

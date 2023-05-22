@@ -30,10 +30,10 @@ public class LoginPage extends BasePage {
 
     @Step("login page")
     public LoginPage login(String userName, String password) {
-        emailAddressTxb.waitForElementToBeVisible(5000);
+        emailAddressTxb.waitForElementToBeVisible(0);
         emailAddressTxb.sendKeys(userName);
         continueBtn.click();
-        passwordTxb.waitForElementToBeVisible(5000);
+        passwordTxb.waitForElementToBeVisible(0);
         passwordTxb.sendKeys(password);
         loginBtn.click();
         return this;

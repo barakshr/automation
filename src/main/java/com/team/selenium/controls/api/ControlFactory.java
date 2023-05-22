@@ -5,7 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
 
-public class ControlFactory extends PageFactory {
+public class ControlFactory extends PageFactory  {
 
     public static void initElements(WebDriver driver, Object page) {
         PageFactory.initElements(new ControlFieldDecorator(new DefaultElementLocatorFactory(driver)), page);

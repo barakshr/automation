@@ -15,7 +15,7 @@ public class BrowserActions {
     }
 
     public void goToUrl(String url) throws InterruptedException {
-        webDriver.navigate().to(url);
+        webDriver.get(url);
     }
 
     public void waitForUrlToAppear(String expectedUrl, Duration duration) {
