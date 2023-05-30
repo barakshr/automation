@@ -1,6 +1,5 @@
 package com.team.selenium_pages.pages.atlassian;
 
-import com.team.framwork.selenium.controls.elements.TextBox;
 import com.team.selenium_pages.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.How;
 public class StartPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//input[@data-testid='recent-work_search-input']")
-    private TextBox filterTxb;
+    private WebElement filterTxb;
 
     @FindBy(how = How.XPATH, using = "//div[@data-testid='viewedPanel']")
     private WebElement filterTextResults;

@@ -1,18 +1,18 @@
 package com.team.selenium_pages.pages.herokuapp;
 
-import com.team.framwork.selenium.controls.elements.Button;
-import com.team.framwork.selenium.controls.elements.SimpleText;
+import com.team.framwork.selenium.controls.elements.Control;
 import com.team.selenium_pages.pages.BasePage;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class JsAlertsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//button[text()='Click for JS Alert']")
-    private Button triggerAlertButton;
+    private Control triggerAlertButton;
 
     @FindBy(how = How.ID, using = "result")
-    private SimpleText alertResultMessage;
+    private WebElement alertResultMessage;
 
 
     public JsAlertsPage clickOnJsAlertButton() {

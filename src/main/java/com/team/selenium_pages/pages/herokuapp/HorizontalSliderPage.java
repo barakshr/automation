@@ -1,9 +1,9 @@
 package com.team.selenium_pages.pages.herokuapp;
 
-import com.team.framwork.selenium.controls.elements.SimpleText;
 import com.team.framwork.selenium.controls.elements.Slider;
 import com.team.selenium_pages.pages.BasePage;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -13,7 +13,7 @@ public class HorizontalSliderPage extends BasePage {
     Slider sliderButton;
 
     @FindBy(how = How.ID, using = "range")
-    SimpleText sliderRange;
+    WebElement sliderRange;
 
 
     public HorizontalSliderPage moveHorizontalSliderWithArrows(int toRange) {

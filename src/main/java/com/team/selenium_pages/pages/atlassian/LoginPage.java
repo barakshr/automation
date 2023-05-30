@@ -1,39 +1,40 @@
 package com.team.selenium_pages.pages.atlassian;
 
-import com.team.framwork.selenium.controls.elements.Button;
-import com.team.framwork.selenium.controls.elements.SimpleText;
-import com.team.framwork.selenium.controls.elements.TextBox;
+import com.team.framwork.selenium.controls.elements.Control;
 import com.team.selenium_pages.pages.BasePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.time.Duration;
 
 
 public class LoginPage extends BasePage {
 
 
     @FindBy(how = How.ID, using = "login-submit")
-    private Button continueBtn;
+    private Control continueBtn;
 
     @FindBy(how = How.ID, using = "login-submit")
-    private Button loginBtn;
+    private Control loginBtn;
 
     @FindBy(how = How.ID, using = "username")
-    private TextBox emailAddressTxb;
+    private Control emailAddressTxb;
 
     @FindBy(how = How.ID, using = "password")
-    private TextBox passwordTxb;
+    private Control passwordTxb;
 
     @FindBy(how = How.CLASS_NAME, using = "css-xal9c7")
-    private SimpleText wrongPasswordError;
+    private WebElement wrongPasswordError;
 
 
     @Step("login page")
     public LoginPage login(String userName, String password) {
-        emailAddressTxb.waitForElementToBeVisible(0);
+        emailAddressTxb.waitForElementToBeVisible(Duration.ofSeconds(10));
         emailAddressTxb.sendKeys(userName);
         continueBtn.click();
-        passwordTxb.waitForElementToBeVisible(0);
+        passwordTxb.waitForElementToBeVisible(Duration.ofSeconds(10));
         passwordTxb.sendKeys(password);
         loginBtn.click();
         return this;

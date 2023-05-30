@@ -1,11 +1,10 @@
 package com.team.selenium_pages.pages.herokuapp.DynamicWait;
 
+import com.team.framwork.selenium.controls.elements.Control;
 import com.team.selenium_pages.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -15,12 +14,11 @@ public class ElementRenderedAfterTheFactPage extends BasePage {
     WebElement startButton;
 
     @FindBy(how = How.ID, using = "finish")
-    WebElement finish;
+    Control finish;
 
     public void press() {
         startButton.click();
-        WebDriverWait wait = new WebDriverWait(getWebDriver(), Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(finish));
+        finish.waitForElementToBeVisible(Duration.ofSeconds(30));
         finish.getText();
     }
 

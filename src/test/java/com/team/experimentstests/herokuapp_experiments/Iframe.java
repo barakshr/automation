@@ -1,4 +1,4 @@
-package com.team.selenium_tests.herokuapp_experiments;
+package com.team.experimentstests.herokuapp_experiments;
 
 import com.team.framwork.selenium.DriverPool;
 import io.github.bonigarcia.wdm.WebDriverManager;

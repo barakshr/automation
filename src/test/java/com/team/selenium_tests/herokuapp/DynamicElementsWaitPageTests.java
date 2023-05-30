@@ -1,4 +1,4 @@
-package com.team.selenium_tests.herokuapp_pageobject;
+package com.team.selenium_tests.herokuapp;
 
 import com.team.selenium_pages.pages.herokuapp.HomePage;
 import com.team.selenium_pages.pages.herokuapp.DynamicWait.DynamicLoadingPage;
@@ -11,7 +11,7 @@ public class DynamicElementsWaitPageTests extends BaseTest {
 
 
     @Test
-    public void fff() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void dWait() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         HomePage homePage = new HomePage();
         homePage
                 .selectLinkToPage("Dynamic Loading")

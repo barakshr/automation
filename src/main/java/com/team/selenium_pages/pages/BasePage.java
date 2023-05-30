@@ -33,7 +33,7 @@ public abstract class BasePage {
         getBrowserActions().waitForUrlToAppear(pageUrl, Duration.ofSeconds(10));
     }
 
-   public Actions getActions() {
+    public Actions getActions() {
         return new Actions(webDriver);
     }
 
@@ -41,11 +41,11 @@ public abstract class BasePage {
         return logger;
     }
 
-    public  WebDriver getWebDriver() {
+    public WebDriver getWebDriver() {
         return webDriver;
     }
 
-    public  BrowserActions getBrowserActions() {
+    public BrowserActions getBrowserActions() {
         return browserActions;
     }
 }

@@ -14,7 +14,7 @@ public class SliderImp extends ControlImpl implements Slider {
     @Override
     public void moveSliderWithArrow(Keys arrowKey, float numberOfPress) {
         for (int i = 0; i < numberOfPress; i++) {
-            getElement().sendKeys(arrowKey);
+            getWrappedElement().sendKeys(arrowKey);
         }
     }
 }

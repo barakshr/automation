@@ -1,4 +1,4 @@
-package com.team.selenium_tests.herokuapp_pageobject;
+package com.team.selenium_tests.herokuapp;
 
 import com.team.selenium_pages.pages.herokuapp.HomePage;
 import com.team.selenium_tests.BaseTest;
