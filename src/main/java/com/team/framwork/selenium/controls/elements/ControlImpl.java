@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.List;
 
 
-public  class ControlImpl implements Control {
+public abstract class ControlImpl implements Control {
 
     private final WebElement element;
     private final WebDriver webDriver;
@@ -63,11 +63,6 @@ public  class ControlImpl implements Control {
     }
 
 
-    @Override
-    public void waitForElementToBeVisible(Duration duration) {
-        WebDriverWait wait = new WebDriverWait(webDriver, duration);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
 
     @Override
    public String getText(){

@@ -1,6 +1,6 @@
 package com.team.selenium_pages.pages.atlassian;
 
-import com.team.framwork.selenium.controls.elements.Control;
+
 import com.team.selenium_pages.pages.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -14,16 +14,16 @@ public class LoginPage extends BasePage {
 
 
     @FindBy(how = How.ID, using = "login-submit")
-    private Control continueBtn;
+    private WebElement continueBtn;
 
     @FindBy(how = How.ID, using = "login-submit")
-    private Control loginBtn;
+    private WebElement loginBtn;
 
     @FindBy(how = How.ID, using = "username")
-    private Control emailAddressTxb;
+    private WebElement emailAddressTxb;
 
     @FindBy(how = How.ID, using = "password")
-    private Control passwordTxb;
+    private WebElement passwordTxb;
 
     @FindBy(how = How.CLASS_NAME, using = "css-xal9c7")
     private WebElement wrongPasswordError;
@@ -31,10 +31,10 @@ public class LoginPage extends BasePage {
 
     @Step("login page")
     public LoginPage login(String userName, String password) {
-        emailAddressTxb.waitForElementToBeVisible(Duration.ofSeconds(10));
+        getElementWait().waitForVisibilityOf(emailAddressTxb, Duration.ofSeconds(10));
         emailAddressTxb.sendKeys(userName);
         continueBtn.click();
-        passwordTxb.waitForElementToBeVisible(Duration.ofSeconds(10));
+        getElementWait().waitForVisibilityOf(passwordTxb, Duration.ofSeconds(10));
         passwordTxb.sendKeys(password);
         loginBtn.click();
         return this;

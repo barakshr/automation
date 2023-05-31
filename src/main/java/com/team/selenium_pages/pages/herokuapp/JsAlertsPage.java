@@ -1,6 +1,6 @@
 package com.team.selenium_pages.pages.herokuapp;
 
-import com.team.framwork.selenium.controls.elements.Control;
+
 import com.team.selenium_pages.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.How;
 public class JsAlertsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//button[text()='Click for JS Alert']")
-    private Control triggerAlertButton;
+    private WebElement triggerAlertButton;
 
     @FindBy(how = How.ID, using = "result")
     private WebElement alertResultMessage;

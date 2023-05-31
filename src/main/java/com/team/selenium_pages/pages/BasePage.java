@@ -2,6 +2,7 @@ package com.team.selenium_pages.pages;
 
 import com.team.framwork.selenium.BrowserActions;
 import com.team.framwork.selenium.DriverPool;
+import com.team.framwork.selenium.ElementWait;
 import com.team.framwork.selenium.controls.api.ControlFactory;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
@@ -17,11 +18,14 @@ public abstract class BasePage {
     private final WebDriver webDriver;
     private final BrowserActions browserActions;
 
+    private final ElementWait elementWait;
+
     public BasePage() {
         logger = LogManager.getLogger(this.getClass());
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
         ControlFactory.initElements(this.webDriver, this);
         this.browserActions = new BrowserActions();
+        this.elementWait= new ElementWait();
     }
 
     public <T extends BasePage> T goToPage(Class<T> tPageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
@@ -47,5 +51,9 @@ public abstract class BasePage {
 
     public BrowserActions getBrowserActions() {
         return browserActions;
+    }
+
+    public ElementWait getElementWait() {
+        return elementWait;
     }
 }

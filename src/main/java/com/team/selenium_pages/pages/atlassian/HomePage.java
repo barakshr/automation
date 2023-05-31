@@ -1,9 +1,9 @@
 package com.team.selenium_pages.pages.atlassian;
 
 
-import com.team.framwork.selenium.controls.elements.Control;
 import com.team.selenium_pages.pages.BasePage;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -12,18 +12,18 @@ import java.time.Duration;
 public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//a[@data-label='Work Management']")
-    private Control workManagementButton;
+    private WebElement workManagementButton;
 
-    @FindBy(how =  How.CLASS_NAME, using = "css-q68uj")
-    private Control myAccountButton;
+    @FindBy(how = How.CLASS_NAME, using = "css-q68uj")
+    private WebElement myAccountButton;
 
     @FindBy(how = How.XPATH, using = "//div[@id='uid1']/div/div/div/div")
-    private Control loginButton;
+    private WebElement loginButton;
 
     @Step("click on work management button")
     public WorkManagementPage goToWorkManagement() {
         getLogger().info("clickOnWorkManagement button");
-        workManagementButton.waitForElementToBeVisible(Duration.ofSeconds(10));
+        getElementWait().waitForVisibilityOf(workManagementButton, Duration.ofSeconds(10));
         workManagementButton.click();
         return new WorkManagementPage();
     }

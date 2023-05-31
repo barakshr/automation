@@ -2,6 +2,7 @@ package com.team.framwork.selenium.controls.api;
 
 
 import com.team.framwork.selenium.controls.elements.Control;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 
@@ -28,7 +29,15 @@ public class ControlHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
-        WebElement element = locator.findElement();
+        WebElement element;
+        try {
+             element = locator.findElement();
+        }catch (NoSuchElementException e){
+            if ("toString".equals(method.getName())) {
+                return "Proxy element for: " + this.locator.toString();
+            }
+            throw e;
+        }
         Constructor cons = wrappingType.getConstructor(WebElement.class);
         Object thing = cons.newInstance(element);
         try {
