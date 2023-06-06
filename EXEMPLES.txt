@@ -1,0 +1,4 @@
+elements
+
+//button[text()='Click for JS Alert']
+//a[contains(text(),'text')]

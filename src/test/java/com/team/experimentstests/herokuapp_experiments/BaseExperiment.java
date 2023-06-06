@@ -3,6 +3,7 @@ package com.team.experimentstests.herokuapp_experiments;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
@@ -15,11 +16,17 @@ public class BaseExperiment {
     public void setUp(){
         WebDriverManager.firefoxdriver().setup();
         this.webDriver = new FirefoxDriver();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(2));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(6));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(3));
     }
 
     public WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        webDriver.close();
     }
 }
