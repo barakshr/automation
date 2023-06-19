@@ -4,19 +4,19 @@
     <test name="HorizontalSliderTests_1" parallel="methods">
         <parameter name="rangeVal" value="4"/>
         <classes>
-            <class name="com.team.selenium_tests.selenium.tests.herokuapp.HorizontalSliderTests"/>
+            <class name="com.team.selenium_tests.herokuapp.HorizontalSliderTests"/>
         </classes>
     </test>
     <test name="HorizontalSliderTests_2" parallel="methods">
         <parameter name="rangeVal" value="0"/>
         <classes>
-            <class name="com.team.selenium_tests.selenium.tests.herokuapp.HorizontalSliderTests"/>
+            <class name="com.team.selenium_tests.herokuapp.HorizontalSliderTests"/>
         </classes>
     </test>
     <test name="HorizontalSliderTests_3" parallel="methods">
         <parameter name="rangeVal" value="5"/>
         <classes>
-            <class name="com.team.selenium_tests.selenium.tests.herokuapp.HorizontalSliderTests"/>
+            <class name="com.team.selenium_tests.herokuapp.HorizontalSliderTests"/>
         </classes>
     </test>
 </suite>

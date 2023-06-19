@@ -10,25 +10,23 @@ import org.testng.annotations.Listeners;
 @Listeners(Listener.class)
 public abstract class BaseTest {
     private Initilizer initilizer;
-    private  Logger logger;
-   // private HomePage homePage;
+    private Logger logger;
 
     @BeforeMethod
     public void setUp() throws Exception {
         logger = LogManager.getLogger(this.getClass());
         this.initilizer = new Initilizer();
-  //      homePage= new HomePage();
     }
 
     @AfterMethod
     public void tearDown() {
-       initilizer.closeDriver();;
+        initilizer.closeDriver();
+        ;
     }
+
     public Logger getLogger() {
         return logger;
     }
 
- //   public HomePage getHomePage() {
-//        return homePage;
-//    }
+
 }
