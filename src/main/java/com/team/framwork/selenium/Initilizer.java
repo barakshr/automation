@@ -8,9 +8,9 @@ public class Initilizer {
     public Initilizer() throws Exception {
         PropertiesHandler.readProperties();
         new WebDriverFactory().openNewWebDriver(Settings.BrowserType);
-        BrowserActions browserActions = new BrowserActions();
-        browserActions.maximize();
-        browserActions.goToUrl(Settings.AUT);
+        BrowserAction browserAction = new BrowserAction();
+        browserAction.maximize();
+        browserAction.goToUrl(Settings.AUT);
     }
 
     public void closeDriver() {

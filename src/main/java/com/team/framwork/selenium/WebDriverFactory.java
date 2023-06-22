@@ -7,9 +7,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.log.Log;
+import org.openqa.selenium.devtools.v85.log.model.LogEntry;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.ProfilesIni;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 
 public class WebDriverFactory {
@@ -21,8 +28,12 @@ public class WebDriverFactory {
         WebDriver webDriver = null;
         switch (browserType) {
             case Firefox:
+                FirefoxProfile profile = new ProfilesIni().getProfile("default");
+                profile.setPreference("network.cookie.cookieBehavior", 3);
+                FirefoxOptions capabilities = new FirefoxOptions();
+                capabilities.setProfile(profile);
                 WebDriverManager.firefoxdriver().setup();
-                webDriver = new FirefoxDriver();
+                webDriver = new FirefoxDriver(capabilities);
                 break;
             case Chrome:
                 /*
@@ -40,9 +51,9 @@ public class WebDriverFactory {
             case IE:
                 throw new Exception("IE not web driver implemented");
         }
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(3));
-        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(3));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(21));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(12));
         DriverPool.getInstance().setDriver(Thread.currentThread().getId(), webDriver);
     }
 

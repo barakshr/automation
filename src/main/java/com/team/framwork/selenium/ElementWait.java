@@ -20,4 +20,11 @@ public class ElementWait {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitForText(WebElement element,Duration duration,String text){
+        WebDriverWait wait = new WebDriverWait(webDriver, duration);
+        wait.until(ExpectedConditions.textToBePresentInElement(element,text));
+    }
+
+
+
 }

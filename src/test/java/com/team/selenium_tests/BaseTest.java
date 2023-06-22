@@ -21,7 +21,6 @@ public abstract class BaseTest {
     @AfterMethod
     public void tearDown() {
         initilizer.closeDriver();
-        ;
     }
 
     public Logger getLogger() {

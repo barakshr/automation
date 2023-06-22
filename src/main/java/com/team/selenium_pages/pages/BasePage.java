@@ -1,6 +1,6 @@
 package com.team.selenium_pages.pages;
 
-import com.team.framwork.selenium.BrowserActions;
+import com.team.framwork.selenium.BrowserAction;
 import com.team.framwork.selenium.DriverPool;
 import com.team.framwork.selenium.ElementWait;
 import com.team.framwork.selenium.controls.api.ControlFactory;
@@ -16,7 +16,7 @@ import java.time.Duration;
 public abstract class BasePage {
     private final Logger logger;
     private final WebDriver webDriver;
-    private final BrowserActions browserActions;
+    private final BrowserAction browserAction;
 
     private final ElementWait elementWait;
 
@@ -24,7 +24,7 @@ public abstract class BasePage {
         logger = LogManager.getLogger(this.getClass());
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
         ControlFactory.initElements(this.webDriver, this);
-        this.browserActions = new BrowserActions();
+        this.browserAction = new BrowserAction();
         this.elementWait= new ElementWait();
     }
 
@@ -49,8 +49,8 @@ public abstract class BasePage {
         return webDriver;
     }
 
-    public BrowserActions getBrowserActions() {
-        return browserActions;
+    public BrowserAction getBrowserActions() {
+        return browserAction;
     }
 
     public ElementWait getElementWait() {

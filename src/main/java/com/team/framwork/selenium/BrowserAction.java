@@ -6,11 +6,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BrowserActions {
+public class BrowserAction {
 
     private final WebDriver webDriver;
 
-    public BrowserActions() {
+    public BrowserAction() {
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
     }
 
