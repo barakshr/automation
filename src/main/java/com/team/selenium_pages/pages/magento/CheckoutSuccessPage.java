@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CheckoutSuccessPage extends BasePage {
 
 
@@ -12,7 +15,12 @@ public class CheckoutSuccessPage extends BasePage {
     WebElement checkoutSuccess;
 
     //regex
-    public String getOrderId(){
-        return checkoutSuccess.getText();
+    public String getOrderId() throws Exception {
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(checkoutSuccess.getText());
+        if (matcher.find()) {
+            return  matcher.group(0);
+        }
+        throw new Exception("order id not found");
     }
 }

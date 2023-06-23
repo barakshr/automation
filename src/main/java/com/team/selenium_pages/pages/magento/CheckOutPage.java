@@ -97,7 +97,7 @@ public class CheckOutPage extends BasePage {
 
     public CheckOutPage selectCountry(String country) throws InterruptedException {
         getElementWait().waitForClickable(stateDropDown,Duration.ofSeconds(4));
-        Thread.sleep(500);
+        Thread.sleep(1000);
         stateDropDown.selectFormDropdown(country);
         return this;
     }
@@ -108,10 +108,10 @@ public class CheckOutPage extends BasePage {
     }
 
     //change return class to generic
-    public PaymentPage clickOnNext() {
+    public CheckOutPage clickOnNext() {
         getElementWait().waitForClickable(nextButton,Duration.ofSeconds(3));
         nextButton.click();
-        return new PaymentPage();
+        return this;
     }
 
 }

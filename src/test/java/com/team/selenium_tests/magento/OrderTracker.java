@@ -2,7 +2,7 @@ package com.team.selenium_tests.magento;
 
 import com.team.framwork.selenium.DriverPool;
 import com.team.selenium_pages.pages.magento.HomePage;
-import com.team.selenium_tests.BaseTest;
+import com.team.selenium_pages.pages.magento.PaymentPage;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
@@ -10,8 +10,10 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class OrderTracker extends BaseTest {
+public class OrderTracker {
 
     @Test
     public void idTracking() throws Exception {
@@ -32,9 +34,23 @@ public class OrderTracker extends BaseTest {
                 .enterPhoneNumber("0529653215")
                 .tableRateShipment()
                 .clickOnNext()
+                .goToPage(PaymentPage.class)
                 .clickOnPlaceOrder()
                 .getOrderId();
-        int y=0;
+
+    }
+
+    @Test
+    public void sss() {
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher("Your order # is: 000014560.\n" +
+                "We'll email you an order confirmation with details and tracking info.\n" +
+                "Continue Shopping");
+        if (m.find()) {
+            System.out.println(m.group(0));
+        }
+
+
     }
 
 

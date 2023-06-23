@@ -7,16 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.log.Log;
-import org.openqa.selenium.devtools.v85.log.model.LogEntry;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.ProfilesIni;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
-import java.util.Objects;
-import java.util.function.Consumer;
 
 
 public class WebDriverFactory {
@@ -30,10 +26,12 @@ public class WebDriverFactory {
             case Firefox:
                 FirefoxProfile profile = new ProfilesIni().getProfile("default");
                 profile.setPreference("network.cookie.cookieBehavior", 3);
-                FirefoxOptions capabilities = new FirefoxOptions();
-                capabilities.setProfile(profile);
+                FirefoxOptions options = new FirefoxOptions();
+                options.setProfile(profile);
+                String userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1";
+                options.addPreference("general.useragent.override", userAgent);
                 WebDriverManager.firefoxdriver().setup();
-                webDriver = new FirefoxDriver(capabilities);
+                webDriver = new FirefoxDriver(options);
                 break;
             case Chrome:
                 /*
