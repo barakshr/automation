@@ -8,6 +8,7 @@ import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.lang.reflect.InvocationTargetException;
@@ -25,7 +26,7 @@ public abstract class BasePage {
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
         ControlFactory.initElements(this.webDriver, this);
         this.browserAction = new BrowserAction();
-        this.elementWait= new ElementWait();
+        this.elementWait = new ElementWait();
     }
 
     public <T extends BasePage> T goToPage(Class<T> tPageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
@@ -56,4 +57,7 @@ public abstract class BasePage {
     public ElementWait getElementWait() {
         return elementWait;
     }
+
+
+
 }

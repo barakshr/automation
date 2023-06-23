@@ -7,6 +7,7 @@ import org.openqa.selenium.support.How;
 
 public class CheckoutSuccessPage extends BasePage {
 
+
     @FindBy(how = How.CLASS_NAME, using = "checkout-success")
     WebElement checkoutSuccess;
 

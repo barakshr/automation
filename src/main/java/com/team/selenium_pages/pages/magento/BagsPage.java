@@ -1,6 +1,5 @@
 package com.team.selenium_pages.pages.magento;
 
-import com.team.framwork.selenium.ElementWait;
 import com.team.selenium_pages.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,13 +33,12 @@ public class BagsPage extends BasePage {
         Item item = new Item(bag);
         item.addToCart();
         //bug when item index is more than 1
-        ElementWait elementWait = new ElementWait();
         numberOfItemsInCart++;
-        elementWait.waitForText(cartCounter, Duration.ofSeconds(5), numberOfItemsInCart.toString());
+        getElementWait().waitForText(cartCounter, Duration.ofSeconds(5), numberOfItemsInCart.toString());
         return this;
     }
 
-    public CheckOutPage goToCheckout() {
+    public CheckOutPage goToCheckoutPage() {
         getActions().moveToElement(cartIconButton).click().perform();
         checkOutButton.click();
         return new CheckOutPage();

@@ -6,13 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import java.util.List;
+import java.time.Duration;
 
 public class CheckOutPage extends BasePage {
 
     //fix
-    @FindBy(how = How.XPATH ,using = "//select[@class='select']")
-    List<Dropdown> countryDropDown;
+    @FindBy(how = How.XPATH, using = "//select[@name='country_id']")
+    Dropdown stateDropDown;
 
     @FindBy(how = How.XPATH, using = "//input[@id='customer-email']")
     WebElement emailAddressTextBox;
@@ -41,7 +41,16 @@ public class CheckOutPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@class='button action continue primary']")
     WebElement nextButton;
 
-    //button[@class='button action continue primary']
+
+    @FindBy(how = How.XPATH, using = "//input[@value='flatrate_flatrate']")
+    WebElement flatRateShipmentCheckBox;
+
+
+
+    public CheckOutPage waitForPageToLoad(Duration duration) {
+        getElementWait().waitForVisibilityOf(firstNameTextBox, duration);
+        return this;
+    }
 
     public CheckOutPage enterEmailAddress(String emailAddress) {
         emailAddressTextBox.sendKeys(emailAddress);
@@ -86,15 +95,21 @@ public class CheckOutPage extends BasePage {
         return this;
     }
 
-    public CheckOutPage selectCountry(String country){
-        countryDropDown.get(1).click();
-        countryDropDown.get(1).sendKeys("Israel");
-        countryDropDown.get(1).click();
+    public CheckOutPage selectCountry(String country) throws InterruptedException {
+        getElementWait().waitForClickable(stateDropDown,Duration.ofSeconds(4));
+        Thread.sleep(500);
+        stateDropDown.selectFormDropdown(country);
+        return this;
+    }
+
+    public CheckOutPage tableRateShipment(){
+        flatRateShipmentCheckBox.click();
         return this;
     }
 
     //change return class to generic
-    public PaymentPage clickOnNext(){
+    public PaymentPage clickOnNext() {
+        getElementWait().waitForClickable(nextButton,Duration.ofSeconds(3));
         nextButton.click();
         return new PaymentPage();
     }

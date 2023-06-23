@@ -7,6 +7,7 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
 
@@ -18,20 +19,22 @@ public class OrderTracker extends BaseTest {
         String orderId = homePage.hoverOnGear()
                 .enterBagsOption()
                 .addBagToCart(0)
-                .goToCheckout()
+                .goToCheckoutPage()
+                .waitForPageToLoad(Duration.ofSeconds(5))
                 .enterEmailAddress("bobi@gmail.com")
                 .enterFirstName("bobi")
                 .enterLastName("sami")
                 .enterCompanyName("intentIQ")
+                .selectCountry("IL")
                 .enterCity("tel aviv")
+                .enterStreetFirstTextBox("hertsel")
+                .enterZipCode("6810104")
                 .enterPhoneNumber("0529653215")
-                .enterZipCode("6687865")
-                .enterStreetFirstTextBox("herzel")
-                .selectCountry("Israel")
+                .tableRateShipment()
                 .clickOnNext()
                 .clickOnPlaceOrder()
                 .getOrderId();
-
+        int y=0;
     }
 
 

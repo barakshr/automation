@@ -25,6 +25,11 @@ public class ElementWait {
         wait.until(ExpectedConditions.textToBePresentInElement(element,text));
     }
 
+    public void waitForClickable(WebElement element,Duration duration){
+        WebDriverWait wait = new WebDriverWait(webDriver, duration);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
 
 
 }
