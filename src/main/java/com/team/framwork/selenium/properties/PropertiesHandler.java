@@ -20,5 +20,6 @@ public class PropertiesHandler {
         Settings.ExcelSheetPath = properties.getProperty("ExcelSheetPath");
         Settings.AUT = properties.getProperty("AUT");
         Settings.BrowserType = BrowserType.valueOf(properties.getProperty("Browser"));
+        Settings.DataFilePath = properties.getProperty("DataFilePath") ;
     }
 }

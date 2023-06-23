@@ -10,5 +10,6 @@ public class Settings {
     public static String ExcelSheetPath;
     public static String AUT;
     public static com.team.framwork.selenium.BrowserType BrowserType;
+    public static String DataFilePath;
 
 }

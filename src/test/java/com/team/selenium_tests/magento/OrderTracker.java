@@ -1,25 +1,29 @@
 package com.team.selenium_tests.magento;
 
 import com.team.framwork.selenium.DriverPool;
+import com.team.framwork.selenium.properties.Settings;
 import com.team.selenium_pages.pages.magento.HomePage;
 import com.team.selenium_pages.pages.magento.PaymentPage;
+import com.team.selenium_tests.BaseTest;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class OrderTracker {
+public class OrderTracker extends BaseTest  {
 
     @Test
-    public void idTracking() throws Exception {
+    public void writeOrderIdToFile() throws Exception {
         HomePage homePage = new HomePage();
         String orderId = homePage.hoverOnGear()
                 .enterBagsOption()
+                //bag
                 .addBagToCart(0)
                 .goToCheckoutPage()
                 .waitForPageToLoad(Duration.ofSeconds(5))
@@ -32,25 +36,26 @@ public class OrderTracker {
                 .enterStreetFirstTextBox("hertsel")
                 .enterZipCode("6810104")
                 .enterPhoneNumber("0529653215")
-                .tableRateShipment()
+                .tableSetRateShipment()
                 .clickOnNext()
                 .goToPage(PaymentPage.class)
                 .clickOnPlaceOrder()
                 .getOrderId();
+        writeToTxtFile("orderId:"+orderId);
+    }
 
+
+
+    private void writeToTxtFile(String orderId) throws IOException {
+        FileWriter fileWriter = new FileWriter(Settings.DataFilePath);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.print(orderId);
+        printWriter.close();
     }
 
     @Test
-    public void sss() {
-        Pattern p = Pattern.compile("\\d+");
-        Matcher m = p.matcher("Your order # is: 000014560.\n" +
-                "We'll email you an order confirmation with details and tracking info.\n" +
-                "Continue Shopping");
-        if (m.find()) {
-            System.out.println(m.group(0));
-        }
-
-
+    public void sss() throws IOException {
+      writeToTxtFile("1234");
     }
 
 
