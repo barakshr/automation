@@ -36,7 +36,7 @@ public class OrderTracker extends BaseTest  {
                 .enterStreetFirstTextBox("hertsel")
                 .enterZipCode("6810104")
                 .enterPhoneNumber("0529653215")
-                .tableSetRateShipment()
+                .setRateShipment()
                 .clickOnNext()
                 .goToPage(PaymentPage.class)
                 .clickOnPlaceOrder()

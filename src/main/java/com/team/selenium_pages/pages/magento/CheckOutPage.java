@@ -102,7 +102,7 @@ public class CheckOutPage extends BasePage {
         return this;
     }
 
-    public CheckOutPage tableSetRateShipment(){
+    public CheckOutPage setRateShipment(){
         flatRateShipmentCheckBox.click();
         return this;
     }
