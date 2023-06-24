@@ -12,7 +12,6 @@ public class PaymentPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@class='action primary checkout']")
     WebElement placeOrderButton;
 
-
     public FinishedPurchasePage clickOnPlaceOrder() throws InterruptedException {
         getElementWait().waitForVisibilityOf(placeOrderButton, Duration.ofSeconds(3));
         getElementWait().waitForClickable(placeOrderButton, Duration.ofSeconds(3));

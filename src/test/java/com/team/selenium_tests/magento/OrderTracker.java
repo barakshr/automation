@@ -21,9 +21,9 @@ public class OrderTracker extends BaseTest {
     public void writeOrderIdToFile(String email, String firstName, String lastName, String company, String city, String streetFirstFirstLine, String zipCode, String phoneNumber,String country) throws Exception {
         HomePage homePage = new HomePage();
         String orderId = homePage.hoverOnCategory(PurchasingCategory.Gear)
-                .enterCategory(PurchasingCategory.Bags)
+                .enterToCategory(PurchasingCategory.Bags)
                 .addItemToCart(0)
-                .goToCheckoutPage()
+                .goToCustomerDetailsPage()
                 .waitForPageToLoad(Duration.ofSeconds(5))
                 .enterEmailAddress(email)
                 .enterToTextBox(CustomerDetailsPageTextField.FirstName, firstName)

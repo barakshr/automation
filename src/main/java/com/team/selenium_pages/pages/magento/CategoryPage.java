@@ -32,7 +32,7 @@ public class CategoryPage extends BasePage {
         return this;
     }
 
-    public CustomerDetailsPage goToCheckoutPage() {
+    public CustomerDetailsPage goToCustomerDetailsPage() {
         cartIconButton.click();
         checkOutButton.click();
         return new CustomerDetailsPage();

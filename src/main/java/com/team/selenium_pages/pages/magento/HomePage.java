@@ -22,7 +22,7 @@ public class HomePage extends BasePage {
     }
 
 
-    public CategoryPage enterCategory(PurchasingCategory purchasingCategory) {
+    public CategoryPage enterToCategory(PurchasingCategory purchasingCategory) {
         String selectedCategory = String.format(category, purchasingCategory);
         WebElement elementCategory = topMenuBar.findElement(By.xpath(selectedCategory));
         elementCategory.click();
