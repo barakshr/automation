@@ -1,25 +1,30 @@
 package com.team.selenium_pages.pages.magento;
 
 import com.team.selenium_pages.pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class HomePage extends BasePage {
 
-    @FindBy(how = How.XPATH, using = "//a[@id='ui-id-6']")
-    WebElement gear;
+    private static final String category = "//span[text()='%s']";
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div[1]/div/div[2]/nav/ul/li[4]/ul/li[1]/a/span")
-    WebElement bags;
+    @FindBy(how = How.CLASS_NAME, using = "navigation")
+    WebElement topMenuBar;
 
-    public HomePage hoverOnGear() {
-        getActions().moveToElement(gear).perform();
+    public HomePage hoverOnCategory(PurchasingCategory categoryEnum) {
+        String selectedCategory = String.format(category, categoryEnum.name());
+        WebElement elementCategory = topMenuBar.findElement(By.xpath(selectedCategory));
+        getActions().moveToElement(elementCategory).perform();
         return this;
     }
 
-    public BagsPage enterBagsOption() {
-        bags.click();
-        return new BagsPage();
+
+    public Category enterCategory(PurchasingCategory purchasingCategory) {
+        String selectedCategory = String.format(category, purchasingCategory);
+        WebElement elementCategory = topMenuBar.findElement(By.xpath(selectedCategory));
+        elementCategory.click();
+        return new Category();
     }
 }

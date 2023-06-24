@@ -4,6 +4,7 @@ import com.team.framwork.selenium.DriverPool;
 import com.team.framwork.selenium.properties.Settings;
 import com.team.selenium_pages.pages.magento.HomePage;
 import com.team.selenium_pages.pages.magento.PaymentPage;
+import com.team.selenium_pages.pages.magento.PurchasingCategory;
 import com.team.selenium_tests.BaseTest;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -22,10 +23,10 @@ public class OrderTracker extends BaseTest  {
     //add params
     public void writeOrderIdToFile() throws Exception {
         HomePage homePage = new HomePage();
-        String orderId = homePage.hoverOnGear()
-                .enterBagsOption()
-                //bag
-                .addBagToCart(0)
+        String orderId = homePage.hoverOnCategory(PurchasingCategory.Gear)
+                .enterCategory(PurchasingCategory.Bags)
+
+                .addItemToCart(0)
                 .goToCheckoutPage()
                 .waitForPageToLoad(Duration.ofSeconds(5))
                 .enterEmailAddress("bobi@gmail.com")

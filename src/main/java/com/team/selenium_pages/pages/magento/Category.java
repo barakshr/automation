@@ -8,7 +8,7 @@ import org.openqa.selenium.support.How;
 import java.time.Duration;
 import java.util.List;
 
-public class BagsPage extends BasePage {
+public class Category extends BasePage {
     private Integer numberOfItemsInCart = 0;
 
     @FindBy(how = How.XPATH, using = "//li[@class='item product product-item']")
@@ -24,7 +24,7 @@ public class BagsPage extends BasePage {
     @FindBy(how = How.ID, using = "top-cart-btn-checkout")
     WebElement checkOutButton;
 
-    public BagsPage addBagToCart(int itemNumber) throws Exception {
+    public Category addItemToCart(int itemNumber) throws Exception {
         if (itemNumber > bags.size() + 1) {
             throw new Exception(String.format("item number %s doesnt exist in page", itemNumber));
         }
