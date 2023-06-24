@@ -9,19 +9,15 @@ import java.time.Duration;
 import java.util.List;
 
 public class CategoryPage extends BasePage {
-    private Integer numberOfItemsInCart = 0;
-
     @FindBy(how = How.XPATH, using = "//li[@class='item product product-item']")
     List<WebElement> itemsInPage;
-
     @FindBy(how = How.CLASS_NAME, using = "counter-number")
     WebElement cartCounter;
-
     @FindBy(how = How.XPATH, using = "//a[@class='action showcart']")
     WebElement cartIconButton;
-
     @FindBy(how = How.ID, using = "top-cart-btn-checkout")
     WebElement checkOutButton;
+    private Integer numberOfItemsInCart = 0;
 
     public CategoryPage addItemToCart(int itemNumber) throws Exception {
         if (itemNumber > itemsInPage.size() + 1) {

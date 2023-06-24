@@ -7,7 +7,7 @@ public enum Country {
 
     private final String value;
 
-    private Country(String value) {
+    Country(String value) {
         this.value = value;
     }
 

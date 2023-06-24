@@ -19,17 +19,22 @@ import java.io.File;
 public class Listener implements ITestListener, WebDriverListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class.getName());
 
+    public static void takeSnapShot(WebDriver webdriver) throws Exception {
+        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
+        File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+        ByteArrayInputStream imageAsByteArrayIS = new ByteArrayInputStream(FileUtils.readFileToByteArray(srcFile));
+        Allure.addAttachment("Some Screenshot", imageAsByteArrayIS);
+    }
 
     @Override
     public void beforeFindElement(WebElement element, By locator) {
-        LOGGER.info("finding element: {}",element.getText());
+        LOGGER.info("finding element: {}", element.getText());
     }
 
     @Override
     public void beforeClick(WebElement element) {
-        LOGGER.debug("clicking on  element: {}",element.getText());
+        LOGGER.debug("clicking on  element: {}", element.getText());
     }
-
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
@@ -63,12 +68,5 @@ public class Listener implements ITestListener, WebDriverListener {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-    }
-
-    public static void takeSnapShot(WebDriver webdriver) throws Exception {
-        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
-        File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
-        ByteArrayInputStream imageAsByteArrayIS = new ByteArrayInputStream(FileUtils.readFileToByteArray(srcFile));
-        Allure.addAttachment("Some Screenshot", imageAsByteArrayIS);
     }
 }

@@ -23,7 +23,7 @@ public class BrowserAction {
         webDriverWait.until(ExpectedConditions.urlContains(expectedUrl));
     }
 
-    public void maximize(){
+    public void maximize() {
         webDriver.manage().window().maximize();
     }
 

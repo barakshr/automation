@@ -3,9 +3,9 @@ package com.team.framwork.selenium;
 import com.team.framwork.selenium.properties.PropertiesHandler;
 import com.team.framwork.selenium.properties.Settings;
 
-public class Initilizer {
+public class Initializer {
 
-    public Initilizer() throws Exception {
+    public Initializer() throws Exception {
         PropertiesHandler.readProperties();
         new WebDriverFactory().openNewWebDriver(Settings.BrowserType);
         BrowserAction browserAction = new BrowserAction();

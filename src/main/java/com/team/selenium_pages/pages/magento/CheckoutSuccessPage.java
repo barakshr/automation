@@ -19,7 +19,7 @@ public class CheckoutSuccessPage extends BasePage {
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(checkoutSuccess.getText());
         if (matcher.find()) {
-            return  matcher.group(0);
+            return matcher.group(0);
         }
         throw new Exception("order id not found");
     }

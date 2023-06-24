@@ -4,15 +4,10 @@ import com.team.framwork.selenium.BrowserAction;
 import com.team.framwork.selenium.DriverPool;
 import com.team.framwork.selenium.ElementWait;
 import com.team.framwork.selenium.controls.api.ControlFactory;
-import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
-import java.lang.reflect.InvocationTargetException;
-import java.time.Duration;
 
 public abstract class BasePage {
     private final Logger logger;
@@ -29,14 +24,10 @@ public abstract class BasePage {
         this.elementWait = new ElementWait();
     }
 
-    public <T extends BasePage> T goToPage(Class<T> tPageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public <T extends BasePage> T goToPage(Class<T> tPageClass) throws IllegalAccessException, InstantiationException {
         return tPageClass.newInstance();
     }
 
-    @Step("check start page appear")
-    public void checkPageUrlAppear(String pageUrl) {
-        getBrowserActions().waitForUrlToAppear(pageUrl, Duration.ofSeconds(10));
-    }
 
     public Actions getActions() {
         return new Actions(webDriver);
@@ -57,7 +48,6 @@ public abstract class BasePage {
     public ElementWait getElementWait() {
         return elementWait;
     }
-
 
 
 }

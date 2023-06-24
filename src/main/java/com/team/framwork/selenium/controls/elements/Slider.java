@@ -6,5 +6,5 @@ import org.openqa.selenium.Keys;
 @ImplementedBy(SliderImp.class)
 public interface Slider extends Control {
 
-     void moveSliderWithArrow(Keys arrowKey, float numberOfPress);
+    void moveSliderWithArrow(Keys arrowKey, float numberOfPress);
 }

@@ -13,7 +13,7 @@ public enum CheckOutTextField {
 
     private final String value;
 
-    private CheckOutTextField(String value) {
+    CheckOutTextField(String value) {
         this.value = value;
     }
 

@@ -15,8 +15,6 @@ public class BaseExperiment {
     public void setUp() throws Exception {
         WebDriverFactory.openNewWebDriver(BrowserType.Chrome);
         this.webDriver = WebDriverFactory.tempDriver;
-
-
     }
 
     public ChromeDriver getWebDriver() {

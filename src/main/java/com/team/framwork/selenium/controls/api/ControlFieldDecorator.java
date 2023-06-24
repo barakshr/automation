@@ -66,7 +66,7 @@ public class ControlFieldDecorator implements FieldDecorator {
                 return false;
             } else {
                 Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
-                return !WebElement.class.equals(listType) && !listType.getClass().isInstance(Control.class) ? false : field.getAnnotation(FindBy.class) != null || field.getAnnotation(FindBys.class) != null || field.getAnnotation(FindAll.class) != null;
+                return (WebElement.class.equals(listType) || listType.getClass().isInstance(Control.class)) && (field.getAnnotation(FindBy.class) != null || field.getAnnotation(FindBys.class) != null || field.getAnnotation(FindAll.class) != null);
             }
         }
     }

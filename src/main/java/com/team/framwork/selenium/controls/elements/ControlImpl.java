@@ -4,10 +4,7 @@ package com.team.framwork.selenium.controls.elements;
 import com.team.framwork.selenium.DriverPool;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Coordinates;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 
@@ -49,7 +46,7 @@ public abstract class ControlImpl implements Control {
 
     @Override
     public String getAttribute(String name) {
-     return    element.getAttribute(name);
+        return element.getAttribute(name);
     }
 
     @Override
@@ -63,9 +60,8 @@ public abstract class ControlImpl implements Control {
     }
 
 
-
     @Override
-   public String getText(){
+    public String getText() {
         return element.getText();
     }
 
@@ -105,9 +101,6 @@ public abstract class ControlImpl implements Control {
     }
 
 
-    WebDriver getWebDriver() {
-        return webDriver;
-    }
 
     @Override
     public WebElement getWrappedElement() {

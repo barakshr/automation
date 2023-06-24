@@ -31,10 +31,10 @@ public class ControlHandler implements InvocationHandler {
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
         WebElement element;
         try {
-             element = locator.findElement();
-        }catch (NoSuchElementException e){
+            element = locator.findElement();
+        } catch (NoSuchElementException e) {
             if ("toString".equals(method.getName())) {
-                return "Proxy element for: " + this.locator.toString();
+                return "Proxy element for: " + this.locator;
             }
             throw e;
         }

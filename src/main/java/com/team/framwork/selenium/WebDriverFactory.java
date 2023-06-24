@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.log.Log;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,19 +20,26 @@ public class WebDriverFactory {
 
     private final static Logger logger = LogManager.getLogger(WebDriverFactory.class);
 
+    public static ChromeDriver tempDriver;
+
+
     public static void openNewWebDriver(BrowserType browserType) throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/resources/drivers/";
         WebDriver webDriver = null;
+
         switch (browserType) {
             case Firefox:
                 FirefoxProfile profile = new ProfilesIni().getProfile("default");
                 profile.setPreference("network.cookie.cookieBehavior", 3);
                 FirefoxOptions options = new FirefoxOptions();
                 options.setProfile(profile);
+                //Settings
                 String userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1";
                 options.addPreference("general.useragent.override", userAgent);
                 WebDriverManager.firefoxdriver().setup();
                 webDriver = new FirefoxDriver(options);
+
+
                 break;
             case Chrome:
                 /*
@@ -44,6 +52,8 @@ public class WebDriverFactory {
                 ChromeDriver chromeDriver = new ChromeDriver();
                 cdpLogs(chromeDriver.getDevTools());
                 webDriver = chromeDriver;
+                tempDriver=chromeDriver;
+
                 break;
 
             case IE:
