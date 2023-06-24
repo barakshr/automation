@@ -22,7 +22,7 @@ public class Listener implements ITestListener, WebDriverListener {
 
     @Override
     public void beforeFindElement(WebElement element, By locator) {
-        LOGGER.debug("finding element: {}",element.getText());
+        LOGGER.info("finding element: {}",element.getText());
     }
 
     @Override

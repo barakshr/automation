@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class PaymentPage extends BasePage {
 
-    @FindBy(how = How.XPATH, using = "//div[@id='checkout-payment-method-load']/div/div/div[2]/div[2]/div[4]/div")
+    @FindBy(how = How.XPATH, using = "//button[@class='action primary checkout']")
     WebElement placeOrderButton;
 
 

@@ -1,22 +1,18 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Parallel Testing Suite">
+<suite name="Testing">
     <test name="HorizontalSliderTests_1" parallel="methods">
-        <parameter name="rangeVal" value="4"/>
+        <parameter name="emailAddress" value="bobi@gmail.com"/>
+        <parameter name="firstName" value="bob"/>
+        <parameter name="lastName" value="bobo"/>
+        <parameter name="company" value="intentIQ"/>
+        <parameter name="city" value="tel aviv"/>
+        <parameter name="streetFirstFirstLine" value="hertsel"/>
+        <parameter name="zipCode" value="6810104"/>
+        <parameter name="phoneNumber" value="0529653215"/>
         <classes>
-            <class name="com.team.selenium_tests.herokuapp.HorizontalSliderTests"/>
+            <class name="com.team.selenium_tests.magento.OrderTracker"/>
         </classes>
     </test>
-    <test name="HorizontalSliderTests_2" parallel="methods">
-        <parameter name="rangeVal" value="0"/>
-        <classes>
-            <class name="com.team.selenium_tests.herokuapp.HorizontalSliderTests"/>
-        </classes>
-    </test>
-    <test name="HorizontalSliderTests_3" parallel="methods">
-        <parameter name="rangeVal" value="5"/>
-        <classes>
-            <class name="com.team.selenium_tests.herokuapp.HorizontalSliderTests"/>
-        </classes>
-    </test>
+
 </suite>
