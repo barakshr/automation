@@ -3,8 +3,7 @@ package com.team.selenium_tests.magento;
 import com.team.framwork.selenium.properties.Settings;
 import com.team.selenium_pages.pages.magento.HomePage;
 import com.team.selenium_pages.pages.magento.PaymentPage;
-import com.team.selenium_pages.pages.magento.enums.CheckOutTextField;
-import com.team.selenium_pages.pages.magento.enums.Country;
+import com.team.selenium_pages.pages.magento.enums.CustomerDetailsPageTextField;
 import com.team.selenium_pages.pages.magento.enums.PurchasingCategory;
 import com.team.selenium_tests.BaseTest;
 import org.testng.annotations.Parameters;
@@ -18,8 +17,8 @@ import java.time.Duration;
 public class OrderTracker extends BaseTest {
 
     @Test
-    @Parameters({"emailAddress", "firstName", "lastName", "company", "city", "streetFirstFirstLine", "zipCode", "phoneNumber"})
-    public void writeOrderIdToFile(String email, String firstName, String lastName, String company, String city, String streetFirstFirstLine, String zipCode, String phoneNumber) throws Exception {
+    @Parameters({"emailAddress", "firstName", "lastName", "company", "city", "streetFirstFirstLine", "zipCode", "phoneNumber","country"})
+    public void writeOrderIdToFile(String email, String firstName, String lastName, String company, String city, String streetFirstFirstLine, String zipCode, String phoneNumber,String country) throws Exception {
         HomePage homePage = new HomePage();
         String orderId = homePage.hoverOnCategory(PurchasingCategory.Gear)
                 .enterCategory(PurchasingCategory.Bags)
@@ -27,14 +26,14 @@ public class OrderTracker extends BaseTest {
                 .goToCheckoutPage()
                 .waitForPageToLoad(Duration.ofSeconds(5))
                 .enterEmailAddress(email)
-                .enterToTextBox(CheckOutTextField.FirstName, firstName)
-                .enterToTextBox(CheckOutTextField.LastName, lastName)
-                .enterToTextBox(CheckOutTextField.Company, company)
-                .enterToTextBox(CheckOutTextField.City, city)
-                .enterToTextBox(CheckOutTextField.StreetFirstFirstLine, streetFirstFirstLine)
-                .enterToTextBox(CheckOutTextField.ZipCode, zipCode)
-                .enterToTextBox(CheckOutTextField.PhoneNumber, phoneNumber)
-                .selectCountry(Country.Israel)
+                .enterToTextBox(CustomerDetailsPageTextField.FirstName, firstName)
+                .enterToTextBox(CustomerDetailsPageTextField.LastName, lastName)
+                .enterToTextBox(CustomerDetailsPageTextField.Company, company)
+                .enterToTextBox(CustomerDetailsPageTextField.City, city)
+                .enterToTextBox(CustomerDetailsPageTextField.StreetFirstFirstLine, streetFirstFirstLine)
+                .enterToTextBox(CustomerDetailsPageTextField.ZipCode, zipCode)
+                .enterToTextBox(CustomerDetailsPageTextField.PhoneNumber, phoneNumber)
+                .selectCountry(country)
                 .setRateShipment()
                 .clickOnNext()
                 .goToPage(PaymentPage.class)

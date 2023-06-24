@@ -13,11 +13,11 @@ public class PaymentPage extends BasePage {
     WebElement placeOrderButton;
 
 
-    public CheckoutSuccessPage clickOnPlaceOrder() throws InterruptedException {
+    public FinishedPurchasePage clickOnPlaceOrder() throws InterruptedException {
         getElementWait().waitForVisibilityOf(placeOrderButton, Duration.ofSeconds(3));
         getElementWait().waitForClickable(placeOrderButton, Duration.ofSeconds(3));
         Thread.sleep(1000);
         placeOrderButton.click();
-        return new CheckoutSuccessPage();
+        return new FinishedPurchasePage();
     }
 }

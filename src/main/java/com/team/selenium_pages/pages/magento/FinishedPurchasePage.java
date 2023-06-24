@@ -8,7 +8,7 @@ import org.openqa.selenium.support.How;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CheckoutSuccessPage extends BasePage {
+public class FinishedPurchasePage extends BasePage {
 
 
     @FindBy(how = How.CLASS_NAME, using = "checkout-success")

@@ -2,8 +2,7 @@ package com.team.selenium_pages.pages.magento;
 
 import com.team.framwork.selenium.controls.elements.Dropdown;
 import com.team.selenium_pages.pages.BasePage;
-import com.team.selenium_pages.pages.magento.enums.CheckOutTextField;
-import com.team.selenium_pages.pages.magento.enums.Country;
+import com.team.selenium_pages.pages.magento.enums.CustomerDetailsPageTextField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,9 +10,9 @@ import org.openqa.selenium.support.How;
 
 import java.time.Duration;
 
-public class CheckOutPage extends BasePage {
+public class CustomerDetailsPage extends BasePage {
 
-    private final String textField = "//input[@name='%s']";
+    private static final String textField = "//input[@name='%s']";
 
 
     @FindBy(how = How.XPATH, using = "//select[@name='country_id']")
@@ -31,37 +30,37 @@ public class CheckOutPage extends BasePage {
     WebElement flatRateShipmentCheckBox;
 
 
-    public CheckOutPage waitForPageToLoad(Duration duration) {
+    public CustomerDetailsPage waitForPageToLoad(Duration duration) {
         getElementWait().waitForVisibilityOf(stateDropDown, duration);
         return this;
     }
 
-    public CheckOutPage enterToTextBox(CheckOutTextField CheckOutTextField, String value) {
-        String textFieldString = String.format(textField, CheckOutTextField.getValue());
+    public CustomerDetailsPage enterToTextBox(CustomerDetailsPageTextField CustomerDetailsPageTextField, String value) {
+        String textFieldString = String.format(textField, CustomerDetailsPageTextField.getValue());
         WebElement webElement = getWebDriver().findElement(By.xpath(textFieldString));
         webElement.sendKeys(value);
         return this;
     }
 
 
-    public CheckOutPage enterEmailAddress(String emailAddress) {
+    public CustomerDetailsPage enterEmailAddress(String emailAddress) {
         emailAddressTextBox.sendKeys(emailAddress);
         return this;
     }
 
-    public CheckOutPage selectCountry(Country country) throws InterruptedException {
+    public CustomerDetailsPage selectCountry(String country) throws InterruptedException {
         getElementWait().waitForClickable(stateDropDown, Duration.ofSeconds(4));
         Thread.sleep(1000);
-        stateDropDown.selectFormDropdown(country.getValue());
+        stateDropDown.selectFormDropdown(country);
         return this;
     }
 
-    public CheckOutPage setRateShipment() {
+    public CustomerDetailsPage setRateShipment() {
         flatRateShipmentCheckBox.click();
         return this;
     }
 
-    public CheckOutPage clickOnNext() {
+    public CustomerDetailsPage clickOnNext() {
         getElementWait().waitForClickable(nextButton, Duration.ofSeconds(3));
         nextButton.click();
         return this;

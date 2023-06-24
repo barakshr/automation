@@ -20,7 +20,6 @@ public class Exp extends BaseExperiment {
     public void xxx() {
         DevTools devTools = getWebDriver().getDevTools();
         devTools.createSession();
-//        getWebDriver().get("https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v86");
         ImmutableMap.Builder<String, Object> params = ImmutableMap.builder();
         SetCookieBlockedReason[] setCookieBlockedReasonArray = {SetCookieBlockedReason.SAMESITENONEINSECURE};
      //   params.put("blockedReasons", setCookieBlockedReasonArray);
@@ -29,8 +28,9 @@ public class Exp extends BaseExperiment {
       //  Network.getAllCookies()
 
 
-        Command command = new Command("Audits.CookieExclusionReason", params.build());
-        devTools.send(command);
+
+       // Command command = new Command("Audits.CookieExclusionReason", params.build());
+        devTools.send(Network.clearBrowserCache());
 
       //  getWebDriver().executeCdpCommand("Network.BlockedSetCookieWithReason",params.build());
 

@@ -1,6 +1,6 @@
 package com.team.selenium_pages.pages.magento.enums;
 
-public enum CheckOutTextField {
+public enum CustomerDetailsPageTextField {
 
     EmailAddress("username"),
     FirstName("firstname"),
@@ -13,7 +13,7 @@ public enum CheckOutTextField {
 
     private final String value;
 
-    CheckOutTextField(String value) {
+    CustomerDetailsPageTextField(String value) {
         this.value = value;
     }
 

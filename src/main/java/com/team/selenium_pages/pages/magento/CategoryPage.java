@@ -27,15 +27,14 @@ public class CategoryPage extends BasePage {
         getActions().moveToElement(pageItem).perform();
         Item item = new Item(pageItem);
         item.addToCart();
-        //bug when item index is more than 1
         numberOfItemsInCart++;
         getElementWait().waitForText(cartCounter, Duration.ofSeconds(5), numberOfItemsInCart.toString());
         return this;
     }
 
-    public CheckOutPage goToCheckoutPage() {
+    public CustomerDetailsPage goToCheckoutPage() {
         cartIconButton.click();
         checkOutButton.click();
-        return new CheckOutPage();
+        return new CustomerDetailsPage();
     }
 }
