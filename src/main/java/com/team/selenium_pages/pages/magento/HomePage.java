@@ -1,6 +1,7 @@
 package com.team.selenium_pages.pages.magento;
 
 import com.team.selenium_pages.pages.BasePage;
+import com.team.selenium_pages.pages.magento.enums.PurchasingCategory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,10 +22,10 @@ public class HomePage extends BasePage {
     }
 
 
-    public Category enterCategory(PurchasingCategory purchasingCategory) {
+    public CategoryPage enterCategory(PurchasingCategory purchasingCategory) {
         String selectedCategory = String.format(category, purchasingCategory);
         WebElement elementCategory = topMenuBar.findElement(By.xpath(selectedCategory));
         elementCategory.click();
-        return new Category();
+        return new CategoryPage();
     }
 }

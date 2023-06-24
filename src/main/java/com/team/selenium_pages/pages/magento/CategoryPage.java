@@ -8,29 +8,28 @@ import org.openqa.selenium.support.How;
 import java.time.Duration;
 import java.util.List;
 
-public class Category extends BasePage {
+public class CategoryPage extends BasePage {
     private Integer numberOfItemsInCart = 0;
 
     @FindBy(how = How.XPATH, using = "//li[@class='item product product-item']")
-    List<WebElement> bags;
+    List<WebElement> itemsInPage;
 
-    //button?
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[2]/div[1]/a/span[2]/span[1]")
+    @FindBy(how = How.CLASS_NAME, using = "counter-number")
     WebElement cartCounter;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[2]/div[1]/a")
+    @FindBy(how = How.XPATH, using = "//a[@class='action showcart']")
     WebElement cartIconButton;
 
     @FindBy(how = How.ID, using = "top-cart-btn-checkout")
     WebElement checkOutButton;
 
-    public Category addItemToCart(int itemNumber) throws Exception {
-        if (itemNumber > bags.size() + 1) {
+    public CategoryPage addItemToCart(int itemNumber) throws Exception {
+        if (itemNumber > itemsInPage.size() + 1) {
             throw new Exception(String.format("item number %s doesnt exist in page", itemNumber));
         }
-        WebElement bag = bags.get(itemNumber);
-        getActions().moveToElement(bag).perform();
-        Item item = new Item(bag);
+        WebElement pageItem = itemsInPage.get(itemNumber);
+        getActions().moveToElement(pageItem).perform();
+        Item item = new Item(pageItem);
         item.addToCart();
         //bug when item index is more than 1
         numberOfItemsInCart++;
@@ -39,7 +38,7 @@ public class Category extends BasePage {
     }
 
     public CheckOutPage goToCheckoutPage() {
-        getActions().moveToElement(cartIconButton).click().perform();
+        cartIconButton.click();
         checkOutButton.click();
         return new CheckOutPage();
     }

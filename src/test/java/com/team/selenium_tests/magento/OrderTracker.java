@@ -4,7 +4,9 @@ import com.team.framwork.selenium.DriverPool;
 import com.team.framwork.selenium.properties.Settings;
 import com.team.selenium_pages.pages.magento.HomePage;
 import com.team.selenium_pages.pages.magento.PaymentPage;
-import com.team.selenium_pages.pages.magento.PurchasingCategory;
+import com.team.selenium_pages.pages.magento.enums.CheckOutTextField;
+import com.team.selenium_pages.pages.magento.enums.Country;
+import com.team.selenium_pages.pages.magento.enums.PurchasingCategory;
 import com.team.selenium_tests.BaseTest;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -25,19 +27,18 @@ public class OrderTracker extends BaseTest  {
         HomePage homePage = new HomePage();
         String orderId = homePage.hoverOnCategory(PurchasingCategory.Gear)
                 .enterCategory(PurchasingCategory.Bags)
-
                 .addItemToCart(0)
                 .goToCheckoutPage()
                 .waitForPageToLoad(Duration.ofSeconds(5))
                 .enterEmailAddress("bobi@gmail.com")
-                .enterFirstName("bobi")
-                .enterLastName("sami")
-                .enterCompanyName("intentIQ")
-                .selectCountry("IL")
-                .enterCity("tel aviv")
-                .enterStreetFirstTextBox("hertsel")
-                .enterZipCode("6810104")
-                .enterPhoneNumber("0529653215")
+                .enterToTextBox(CheckOutTextField.FirstName,"bobi")
+                .enterToTextBox(CheckOutTextField.LastName,"sami")
+                .enterToTextBox(CheckOutTextField.Company,"intentIQ")
+                .enterToTextBox(CheckOutTextField.City,"tel aviv")
+                .enterToTextBox(CheckOutTextField.StreetFirstFirstLine,"hertsel")
+                .enterToTextBox(CheckOutTextField.ZipCode,"6810104")
+                .enterToTextBox(CheckOutTextField.PhoneNumber,"0529653215")
+                .selectCountry(Country.Israel)
                 .setRateShipment()
                 .clickOnNext()
                 .goToPage(PaymentPage.class)

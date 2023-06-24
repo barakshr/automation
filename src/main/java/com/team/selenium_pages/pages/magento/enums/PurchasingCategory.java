@@ -1,4 +1,4 @@
-package com.team.selenium_pages.pages.magento;
+package com.team.selenium_pages.pages.magento.enums;
 
 public enum PurchasingCategory {
     Men,
