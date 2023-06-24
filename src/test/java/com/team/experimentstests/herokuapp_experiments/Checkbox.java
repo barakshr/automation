@@ -1,11 +1,10 @@
 package com.team.experimentstests.herokuapp_experiments;
 
+import com.team.experimentstests.BaseExperiment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Checkbox extends BaseExperiment {

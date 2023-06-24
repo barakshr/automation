@@ -1,5 +1,6 @@
 package com.team.experimentstests.herokuapp_experiments;
 
+import com.team.experimentstests.BaseExperiment;
 import io.restassured.RestAssured;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

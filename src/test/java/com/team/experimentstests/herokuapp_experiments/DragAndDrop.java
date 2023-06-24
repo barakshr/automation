@@ -1,11 +1,12 @@
 package com.team.experimentstests.herokuapp_experiments;
 
+import com.team.experimentstests.BaseExperiment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-public class DragAndDrop extends BaseExperiment{
+public class DragAndDrop extends BaseExperiment {
 
     @Test
     public void dragAndDrop() throws InterruptedException {
