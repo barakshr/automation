@@ -50,6 +50,7 @@ public class CustomerDetailsPage extends BasePage {
 
     public CustomerDetailsPage selectCountry(String country) throws InterruptedException {
         getElementWait().waitForClickable(stateDropDown, Duration.ofSeconds(4));
+        //TODO - sleep should be removed
         Thread.sleep(1000);
         stateDropDown.selectFormDropdown(country);
         return this;

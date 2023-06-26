@@ -32,8 +32,9 @@ public class CategoryPage extends BasePage {
         return this;
     }
 
-    public CustomerDetailsPage goToCustomerDetailsPage() {
+    public CustomerDetailsPage goToCustomerDetailsPage()  {
         cartIconButton.click();
+        getElementWait().waitForClickable(checkOutButton,Duration.ofSeconds(3000));
         checkOutButton.click();
         return new CustomerDetailsPage();
     }

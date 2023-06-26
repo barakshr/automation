@@ -1,11 +1,10 @@
 package com.team.selenium_pages.pages.magento;
 
 import com.team.selenium_pages.pages.BasePage;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
-import java.time.Duration;
 
 public class PaymentPage extends BasePage {
 
@@ -13,10 +12,8 @@ public class PaymentPage extends BasePage {
     WebElement placeOrderButton;
 
     public FinishedPurchasePage clickOnPlaceOrder() throws InterruptedException {
-        getElementWait().waitForVisibilityOf(placeOrderButton, Duration.ofSeconds(3));
-        getElementWait().waitForClickable(placeOrderButton, Duration.ofSeconds(3));
-        Thread.sleep(1000);
-        placeOrderButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
+        js.executeScript("arguments[0].click();", placeOrderButton);
         return new FinishedPurchasePage();
     }
 }
