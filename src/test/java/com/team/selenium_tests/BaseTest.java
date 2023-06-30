@@ -16,12 +16,12 @@ public abstract class BaseTest {
     public void setUp() throws Exception {
         logger = LogManager.getLogger(this.getClass());
         this.driverHandler = new DriverHandler();
-        driverHandler.startDriver();
+        driverHandler.startSeleniumDriverProcess();
     }
 
     @AfterMethod
     public void tearDown() {
-        driverHandler.closeDriver();
+        driverHandler.closeSeleniumDriver();
     }
 
     public Logger getLogger() {

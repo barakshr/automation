@@ -8,17 +8,19 @@ public class DriverHandler {
     public DriverHandler() {
     }
 
-    public void startDriver() throws Exception {
+    public void startSeleniumDriverProcess() throws Exception {
         PropertiesHandler.readProperties();
         new WebDriverFactory().openNewWebDriver(Settings.BrowserType);
-        BrowserAction browserAction = new BrowserAction();
+        ImplicitlyWait implicitlyWait= new ImplicitlyWait();
+        implicitlyWait.setImplicitWaits();
         CdpRegistration cdpRegistration = new CdpRegistration();
         cdpRegistration.browserLogsRegistration();
+        BrowserAction browserAction = new BrowserAction();
         browserAction.maximize();
         browserAction.goToUrl(Settings.AUT);
     }
 
-    public void closeDriver() {
+    public void closeSeleniumDriver() {
         DriverPool.getInstance().closeDriver(Thread.currentThread().getId());
     }
 

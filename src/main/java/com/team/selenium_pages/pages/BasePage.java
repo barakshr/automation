@@ -2,7 +2,7 @@ package com.team.selenium_pages.pages;
 
 import com.team.framwork.selenium.BrowserAction;
 import com.team.framwork.selenium.DriverPool;
-import com.team.framwork.selenium.ElementWait;
+import com.team.framwork.selenium.ExplicitElementWait;
 import com.team.framwork.selenium.controls.api.ControlFactory;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
@@ -17,14 +17,14 @@ public abstract class BasePage {
     private final WebDriver webDriver;
     private final BrowserAction browserAction;
 
-    private final ElementWait elementWait;
+    private final ExplicitElementWait explicitElementWait;
 
     public BasePage() {
         logger = LogManager.getLogger(this.getClass());
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
         ControlFactory.initElements(this.webDriver, this);
         this.browserAction = new BrowserAction();
-        this.elementWait = new ElementWait();
+        this.explicitElementWait = new ExplicitElementWait();
     }
 
     public <T extends BasePage> T goToPage(Class<T> tPageClass) throws IllegalAccessException, InstantiationException {
@@ -53,8 +53,8 @@ public abstract class BasePage {
         return browserAction;
     }
 
-    public ElementWait getElementWait() {
-        return elementWait;
+    public ExplicitElementWait getElementWait() {
+        return explicitElementWait;
     }
 
 

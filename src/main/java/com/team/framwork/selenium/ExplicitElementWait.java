@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ElementWait {
+public class ExplicitElementWait {
     private final WebDriver webDriver;
 
-    public ElementWait() {
+    public ExplicitElementWait() {
         this.webDriver = DriverPool.getInstance().getDriver(Thread.currentThread().getId());
     }
 
