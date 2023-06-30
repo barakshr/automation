@@ -19,12 +19,6 @@ import java.io.File;
 public class Listener implements ITestListener, WebDriverListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class.getName());
 
-    public static void takeSnapShot(WebDriver webdriver) throws Exception {
-        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
-        File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
-        ByteArrayInputStream imageAsByteArrayIS = new ByteArrayInputStream(FileUtils.readFileToByteArray(srcFile));
-        Allure.addAttachment("Some Screenshot", imageAsByteArrayIS);
-    }
 
     @Override
     public void beforeFindElement(WebElement element, By locator) {
@@ -68,5 +62,12 @@ public class Listener implements ITestListener, WebDriverListener {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
+    }
+
+    private void takeSnapShot(WebDriver webdriver) throws Exception {
+        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
+        File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+        ByteArrayInputStream imageAsByteArrayIS = new ByteArrayInputStream(FileUtils.readFileToByteArray(srcFile));
+        Allure.addAttachment("Some Screenshot", imageAsByteArrayIS);
     }
 }
