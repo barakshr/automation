@@ -1,5 +1,8 @@
 package com.team.framwork.selenium;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.framwork.selenium.properties.BrowsePropertiesPojo;
+import com.team.framwork.selenium.properties.BrowserOptionsPojo;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,17 +14,23 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.ProfilesIni;
 
-import java.time.Duration;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class  WebDriverFactory {
+public class WebDriverFactory {
 
     private final static Logger logger = LogManager.getLogger(WebDriverFactory.class);
 
     public static void openNewWebDriver(BrowserType browserType) throws Exception {
-        String path = System.getProperty("user.dir") + "/src/main/resources/drivers/";
+        String path = System.getProperty("user.dir") + "/src/main/resources";
+        Path browserOptions = Paths.get(path + "/global-browser-options.json");
+        String globalOptionsString = Files.readString(browserOptions);
+        ObjectMapper objectMapper = new ObjectMapper();
+        BrowserOptionsPojo browsePropertiesPojo = objectMapper.readValue(globalOptionsString, BrowserOptionsPojo.class);
         WebDriver webDriver = null;
         //TODO: hard coded settings, should be in config file
         switch (browserType) {
@@ -30,18 +39,21 @@ public class  WebDriverFactory {
                 profile.setPreference("network.cookie.cookieBehavior", 1);
                 FirefoxOptions options = new FirefoxOptions();
                 options.setProfile(profile);
-                String userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1";
-                options.addPreference("general.useragent.override", userAgent);
+                browsePropertiesPojo.getBrowsePropertiesPojoList().forEach(x->options.addPreference(x.getKey(),x.getValue()));
                 WebDriverManager.firefoxdriver().setup();
                 webDriver = new FirefoxDriver(options);
 
                 break;
             case Chrome:
                 ChromeOptions chromeOptions = new ChromeOptions();
+                Path chromeExperimentalOptionsPath = Paths.get(path + "/chrome-broswer-experimental-options.json");
+                String chromeExperimentalOptionsString = Files.readString(chromeExperimentalOptionsPath);
+                BrowserOptionsPojo chromeExperimentalOptions = objectMapper.readValue(chromeExperimentalOptionsString, BrowserOptionsPojo.class);
                 Map<String, Object> prefs = new HashMap();
-                prefs.put("profile.cookie_controls_mode", 1);
+                chromeExperimentalOptions.getBrowsePropertiesPojoList().forEach(x->prefs.put(x.getKey(),x.getValue()));
+                browsePropertiesPojo.getBrowsePropertiesPojoList().forEach(x->chromeOptions.setCapability(x.getKey(),x.getValue()));
                 chromeOptions.setExperimentalOption("prefs", prefs);
-                System.setProperty("webdriver.chrome.driver", path + "chromedriver");
+                System.setProperty("webdriver.chrome.driver", path + "/drivers/chromedriver");
                 ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
                 webDriver = chromeDriver;
                 break;

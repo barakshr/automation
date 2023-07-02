@@ -16,7 +16,6 @@ public abstract class BasePage {
     private final Logger logger;
     private final WebDriver webDriver;
     private final BrowserAction browserAction;
-
     private final ExplicitElementWait explicitElementWait;
 
     public BasePage() {
@@ -35,7 +34,6 @@ public abstract class BasePage {
     public void checkPageUrlAppear(String pageUrl) {
         getBrowserActions().waitForUrlToAppear(pageUrl, Duration.ofSeconds(10));
     }
-
 
     public Actions getActions() {
         return new Actions(webDriver);
