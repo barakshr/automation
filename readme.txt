@@ -40,16 +40,15 @@ Functional Tests Cases/Scenarios
      1. simulate moderate/high  different transaction  with same / different users
      2  check if site responsive when there are many users with many transactions
      3. simulate normal/moderate/high sessions at the same time ,  check if site is responsive
-     4. check dom that sensitive  data is not available
-     5. check that user credentials are not saved in any way ( browser,cookies,local file..)  and are not stored in DB
-     6. Validate Html/Dom syntex
-     7.  cretate netwok connection issues
-     8.  check for memory leaks and server cpu mem usage
-     9 . check that login and after login are https
-     10. try to create an error or an exception and check that sensitive data is not displayed
-     11 .check availability, capability, and partition tolerance of database ( high data capacity, data is synchronized  in all nodes , node failure doesnt reflect on application data )
-     12. check app is working as it should when a cloud service is failing
-     13 check app is working as it should when a cloud service is  coming back from a failure
+     4. check that user credentials and sensitive data is not saved in any way ( dom,browser,cookies,local file..)  and are not stored in DB
+     5. Validate Html/Dom syntex
+     6. cretate netwok connection issues
+     7. check for memory leaks and server cpu mem usage
+     8. check that login and after login are https
+     9. try to create an error or an exception and check that sensitive data is not displayed
+     10. check application with cap model tests: availability, capability, and partition tolerance of database  ( high data capacity, data is synchronized  in all nodes , node failure doesnt reflect on application data )
+     11. check app is working as it should when a cloud service is failing
+     12  check app is working as it should when a cloud service is  coming back from a failure
      13 check app is working as it should when a cloud service is  added
 
 
