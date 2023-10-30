@@ -22,7 +22,6 @@ public class WebDriverFactory {
 
     WebDriver openNewWebDriver(BrowserType browserType) {
         WebDriver webDriver = null;
-        String path = System.getProperty("user.dir") + "/src/main/resources/drivers/";
         switch (browserType) {
             case Firefox:
                 logger.info("opening new firefox web driver");
