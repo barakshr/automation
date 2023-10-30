@@ -2,12 +2,12 @@ Functional Tests Cases/Scenarios
 
 
     1.Simple Customer Login and Transactions Flow
-       steps: select name-> deposit- > withraw- > account details and balnace are correct - >transaction table result
+       steps: select name-> deposit- > withdraw- > account details and balance are correct - >transaction table result
 
     2 .check simple login flow with few different names (harry potter...)
     3. check home button works in all pages
     4. check logout button works in all pages ( after login)
-    5. login-> do simple transaction->   then logout then ->login again-> and do simple transaction
+    5. login-> do simple transaction->  logout ->login again  and do simple transaction
 
     5. try to withdraw when there is no deposit
     6. try to withdraw amount that is higher than the amount that was deposited
@@ -23,7 +23,7 @@ Functional Tests Cases/Scenarios
 
     16. check that one user transactions doesnt influence on a different user account
     16. try simple customer login and Transactions Flow with different browsers on pc
-    17. try simple customer login and Transactions Flow with different browsers on smartphone (android/apple)
+    17. try simple customer login and Transactions Flow with different app/browsers on smartphone (android/apple)
     18  try to enter to an after login pages wit url
     19  erase cookies,  try to enter to after login pages wit url
     20  logout and try to return to an after login pages with browser back to page button
