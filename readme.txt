@@ -42,9 +42,9 @@ Functional Tests Cases/Scenarios
      3. simulate normal/moderate/high sessions at the same time ,  check if site is responsive
      4. check that user credentials and sensitive data is not saved in any way ( dom,browser,cookies,local file..)  and are not stored in DB
      5. Validate Html/Dom syntex
-     6. cretate netwok connection issues
+     6. simulate network connection issues | offline network
      7. check for memory leaks and server cpu mem usage
-     8. check that login and after login are https
+     8. check that login and after login page url start with 'https'
      9. try to create an error or an exception and check that sensitive data is not displayed
      10. check application with cap model tests: availability, capability, and partition tolerance of database  ( high data capacity, data is synchronized  in all nodes , node failure doesnt reflect on application data )
      11. check app is working as it should when a cloud service is failing
