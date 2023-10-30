@@ -37,6 +37,7 @@ public class TransactionsPageTest extends BaseTest {
         Assert.assertEquals(numberOfTransactionsActualResult, 2);
     }
 
+
     @Test
     public void transactionsTableManyItemsTest() throws InterruptedException {
         DepositPage depositPage = getAccountPage().clickOnDepositButton();
