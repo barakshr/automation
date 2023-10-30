@@ -16,14 +16,14 @@ public class CustomerPage extends BasePage {
     WebElement loginButton;
 
 
-    public CustomerPage selectNameFromDropDown(CustomerName customerName){
+    public CustomerPage selectNameFromDropDown(CustomerName customerName) {
         Select nameDropDownElementSelect = new Select(nameDropDown);
         nameDropDownElementSelect.selectByVisibleText(customerName.getName());
         return this;
     }
 
 
-    public AccountPage clickOnLoginButton(){
+    public AccountPage clickOnLoginButton() {
         loginButton.click();
         return new AccountPage();
     }

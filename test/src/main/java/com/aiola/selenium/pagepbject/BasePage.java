@@ -23,7 +23,6 @@ public class BasePage {
     }
 
 
-
     public WebDriver getWebDriver() {
         return webDriver;
     }

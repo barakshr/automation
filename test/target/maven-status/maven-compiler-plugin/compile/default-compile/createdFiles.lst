@@ -1,9 +1,0 @@
-com/aiola/selenium/pagepbject/bankproject/TransactionsPage.class
-com/aiola/selenium/pagepbject/bankproject/enums/CustomerName.class
-com/aiola/selenium/pagepbject/bankproject/WithdrawPage.class
-com/aiola/selenium/pagepbject/bankproject/AccountPage.class
-com/aiola/selenium/pagepbject/bankproject/CustomerPage.class
-com/aiola/selenium/pagepbject/bankproject/LoginPage.class
-com/aiola/selenium/pagepbject/BasePage.class
-com/aiola/selenium/pagepbject/bankproject/TransactionsOperations.class
-com/aiola/selenium/pagepbject/bankproject/DepositPage.class

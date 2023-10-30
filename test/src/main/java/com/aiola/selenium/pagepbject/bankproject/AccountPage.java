@@ -17,19 +17,17 @@ public class AccountPage extends BasePage {
     WebElement withdrawButton;
 
 
-
-
-    public TransactionsPage clickOnTransactionButton(){
+    public TransactionsPage clickOnTransactionButton() {
         transactionButton.click();
         return new TransactionsPage();
     }
 
-    public DepositPage clickOnDepositButton(){
+    public DepositPage clickOnDepositButton() {
         depositButton.click();
         return new DepositPage();
     }
 
-    public WithdrawPage clickOnWithdrawButton(){
+    public WithdrawPage clickOnWithdrawButton() {
         withdrawButton.click();
         return new WithdrawPage();
     }

@@ -18,7 +18,6 @@ public class TransactionsPageTest extends BaseTest {
                 .clickOnTransactionButton()
                 .getPageUrl();
         String partOfExpectedPageUrl = "#/listTx";
-
         Assert.assertTrue(actualPageUrl.contains(partOfExpectedPageUrl));
     }
 

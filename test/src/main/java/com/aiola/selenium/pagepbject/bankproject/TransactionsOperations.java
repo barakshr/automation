@@ -42,7 +42,7 @@ public abstract class TransactionsOperations<T extends TransactionsOperations> e
         return new WithdrawPage();
     }
 
-    public DepositPage clickOnDepositButton(){
+    public DepositPage clickOnDepositButton() {
         depositButton.click();
         return new DepositPage();
     }

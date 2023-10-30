@@ -14,27 +14,24 @@ import java.util.List;
 public class TransactionsPage extends BasePage {
 
 
-    //todo/
-    ///change to css
-    // @FindBy(how = How.XPATH, using = "table[@class='table table-bordered table-striped']/tbody/tr")
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div/div[2]/table/tbody/tr")
+    @FindBy(how = How.XPATH, using = "//table[@class='table table-bordered table-striped']/tbody/tr")
     List<WebElement> tableTransactions;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div/div[1]/button[1]")
+    @FindBy(how = How.CSS, using = "button[ng-click='back()']")
     WebElement backButton;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div/div[1]/button[2]")
+    @FindBy(how = How.CSS, using = "button[ng-click='reset()']")
     WebElement resetButton;
 
 
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div/div[3]/button[3]")
+    @FindBy(how = How.CSS, using = "button[ng-click='scrollRight()']")
     WebElement nextPageButton;
 
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div/div[3]/button[1]")
+    @FindBy(how = How.CSS, using = "button[ng-click='scrollLeft()']")
     WebElement backPageButton;
 
 
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div/div[3]/button[2]")
+    @FindBy(how = How.CSS, using = "button[ng-click='scrollTop()']")
     WebElement topButton;
 
 

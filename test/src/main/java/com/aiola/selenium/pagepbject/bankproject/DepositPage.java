@@ -7,14 +7,14 @@ public class DepositPage extends TransactionsOperations<DepositPage> {
     public DepositPage enterAmountToTextBox(int amount) throws InterruptedException {
         String amountStr = Integer.toString(amount);
         amountTextBox.sendKeys(amountStr);
-      //  Thread.sleep(100);
+        Thread.sleep(100);
         return this;
     }
 
     @Override
     public DepositPage clickOnSubmitAmountButton() throws InterruptedException {
         submitButton.click();
-       // Thread.sleep(400);
+        Thread.sleep(100);
         return this;
     }
 
