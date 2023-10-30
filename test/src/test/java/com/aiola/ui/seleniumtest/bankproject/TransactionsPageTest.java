@@ -48,6 +48,7 @@ public class TransactionsPageTest extends BaseTest {
         Assert.assertEquals(numberOfTransactionsActualResult, 32);
     }
 
+
     @Test
     public void dataTimeFormatTransactionTableAfterDepositTest() throws InterruptedException {
         TransactionsPage transactionsPage = getAccountPage()
