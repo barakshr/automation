@@ -35,7 +35,7 @@ Functional Tests Cases/Scenarios
 
 
 
-    Non Functions
+    Non Functional tests
      1. check simple flow timing is acceptable
      1. simulate moderate/high  different transaction  with same / different users
      2  check if site responsive when there are many users with many transactions
